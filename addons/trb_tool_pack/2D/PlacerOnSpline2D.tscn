@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0iw7007dc1n7"]
+
+[ext_resource type="Script" uid="uid://dr81agdqkach1" path="res://addons/trb_tool_pack/2D/placer_on_spline_2d.gd" id="1_bbcao"]
+
+[node name="PlacerOnSpline2D" type="Node2D"]
+script = ExtResource("1_bbcao")

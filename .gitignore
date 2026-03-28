@@ -1,5 +1,6 @@
-# Godot 4+ specific ignores
+# RedotGodot 4+ specific ignores
 .godot/
+/android/
 .nomedia
 
 # Godot-specific ignores
@@ -8,7 +9,7 @@ export.cfg
 export_credentials.cfg
 
 # Imported translations (automatically generated from CSV files)
-*.translation
+# *.translation
 
 # Mono-specific ignores
 .mono/
