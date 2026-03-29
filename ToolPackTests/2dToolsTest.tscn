@@ -1,18 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://rh7fahautx7m"]
+[gd_scene load_steps=4 format=3 uid="uid://rh7fahautx7m"]
 
-[ext_resource type="PackedScene" uid="uid://b0iw7007dc1n7" path="res://addons/trb_tool_pack/2D/PlacerOnSpline2D.tscn" id="1_alqy0"]
+[ext_resource type="Script" uid="uid://cij1mgb188xwi" path="res://addons/trb_tool_pack/2D/SinusCurve2D.gd" id="1_alqy0"]
 
-[sub_resource type="Curve2D" id="Curve2D_1lx4o"]
+[sub_resource type="Curve2D" id="Curve2D_alqy0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7.69231, 12.0308, 0, 0, 0, 0, 15.3846, 23.7501, 0, 0, 0, 0, 23.0769, 34.8542, 0, 0, 0, 0, 30.7692, 45.0557, 0, 0, 0, 0, 38.4615, 54.0902, 0, 0, 0, 0, 46.1538, 61.7238, 0, 0, 0, 0, 53.8462, 67.7588, 0, 0, 0, 0, 61.5385, 72.0389, 0, 0, 0, 0, 69.2308, 74.4532, 0, 0, 0, 0, 76.9231, 74.9392, 0, 0, 0, 0, 84.6154, 73.4843, 0, 0, 0, 0, 92.3077, 70.1262, 0, 0, 0, 0, 100, 64.9519, 0, 0, 0, 0, 107.692, 58.0954, 0, 0, 0, 0, 115.385, 49.7342, 0, 0, 0, 0, 123.077, 40.0849, 0, 0, 0, 0, 130.769, 29.3975, 0, 0, 0, 0, 138.462, 17.9487, 0, 0, 0, 0, 146.154, 6.03499, 0, 0, 0, 0, 153.846, -6.03499, 0, 0, 0, 0, 161.538, -17.9487, 0, 0, 0, 0, 169.231, -29.3975, 0, 0, 0, 0, 176.923, -40.0849, 0, 0, 0, 0, 184.615, -49.7342, 0, 0, 0, 0, 192.308, -58.0954, 0, 0, 0, 0, 200, -64.9519, 0, 0, 0, 0, 207.692, -70.1262, 0, 0, 0, 0, 215.385, -73.4843, 0, 0, 0, 0, 223.077, -74.9392, 0, 0, 0, 0, 230.769, -74.4532, 0, 0, 0, 0, 238.462, -72.0389, 0, 0, 0, 0, 246.154, -67.7588, 0, 0, 0, 0, 253.846, -61.7238, 0, 0, 0, 0, 261.538, -54.0902, 0, 0, 0, 0, 269.231, -45.0557, 0, 0, 0, 0, 276.923, -34.8542, 0, 0, 0, 0, 284.615, -23.7501, 0, 0, 0, 0, 292.308, -12.0308, 0, 0, 0, 0, 300, -1.83691e-14)
 }
-point_count = 2
+point_count = 40
+script = ExtResource("1_alqy0")
+frequency = 1.0
+points = 40
+boxSize = Vector2(300, 150)
+metadata/_custom_type_script = "uid://cij1mgb188xwi"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alqy0"]
+size = Vector2(300, 147.5)
 
 [node name="2dToolsTest" type="Node2D"]
 
-[node name="PlacerOnSpline2D" parent="." instance=ExtResource("1_alqy0")]
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(92, 349)
+curve = SubResource("Curve2D_alqy0")
 
-[node name="Instances" type="Node2D" parent="PlacerOnSpline2D"]
-
-[node name="Spline-Editor" type="Path2D" parent="PlacerOnSpline2D"]
-curve = SubResource("Curve2D_1lx4o")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(242, 350)
+shape = SubResource("RectangleShape2D_alqy0")
