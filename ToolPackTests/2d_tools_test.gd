@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var path: Path2D = $Path2D2_Mov1
+@onready var path: Path2D = $Node2D/Path2D2_Mov1 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

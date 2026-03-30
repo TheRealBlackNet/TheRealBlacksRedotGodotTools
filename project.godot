@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [editor]
 
+movie_writer/movie_file="I:/_MyGodot/TheRealBlacksRedotGodotTools/TestSin1.avi"
 run/main_run_args="--_editor"
 
 [editor_plugins]

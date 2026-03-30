@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6n7ekhp3yqca"]
+
+[ext_resource type="Texture2D" uid="uid://bffkj34afu84w" path="res://icon.svg" id="1_he85p"]
+[ext_resource type="Script" uid="uid://cq7q6ioke15ny" path="res://ToolPackTests/player_test.gd" id="1_tkdl8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkdl8"]
+radius = 19.0
+height = 74.0
+
+[node name="PlayerTest" type="CharacterBody2D"]
+script = ExtResource("1_tkdl8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -37)
+shape = SubResource("CapsuleShape2D_tkdl8")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-1, -59)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_he85p")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+scale = Vector2(0.15, 0.3)
+texture = ExtResource("1_he85p")
