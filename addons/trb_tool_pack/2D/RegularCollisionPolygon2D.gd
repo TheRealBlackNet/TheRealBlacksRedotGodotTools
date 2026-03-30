@@ -1,6 +1,6 @@
 @tool
-extends ConvexPolygonShape2D
-class_name RegularShape2D
+extends CollisionPolygon2D
+class_name RegularCollisionPolygon2D
 
 @export_group("Regular-Polygon")
 @export var radius:float = 50.0:
@@ -25,8 +25,7 @@ func _init():
 func _redoPoints():
 	if pointCount < 3:
 		return
-	points.clear()
-	
+	polygon.clear()
 	var newPoints:PackedVector2Array
 	var rot := deg_to_rad(rotationInDegree)
 	
@@ -37,6 +36,4 @@ func _redoPoints():
 
 		newPoints.append(Vector2(x, y))
 	
-	self.set_point_cloud(newPoints)
-	self.emit_changed()
-	
+	self.set_polygon(newPoints)
