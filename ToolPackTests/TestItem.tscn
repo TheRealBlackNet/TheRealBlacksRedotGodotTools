@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://bffkj34afu84w" path="res://icon.svg" id="1_pnleh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnleh"]
-radius = 55.4437
+radius = 17.0
 
-[node name="TestItem" type="Node2D"]
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-1, -1)
-texture = ExtResource("1_pnleh")
+[node name="TestItem" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pnleh")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_pnleh")

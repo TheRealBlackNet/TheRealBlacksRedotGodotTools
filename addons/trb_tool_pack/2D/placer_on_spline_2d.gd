@@ -40,6 +40,7 @@ func _setExistingNodes() -> void:
 
 
 func _notification(what) -> void:
+	print("xxxx: " + str(what))
 	if what == NOTIFICATION_POSTINITIALIZE:
 		_update_instances()
 
