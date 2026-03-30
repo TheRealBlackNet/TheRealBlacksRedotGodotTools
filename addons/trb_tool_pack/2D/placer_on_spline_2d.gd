@@ -2,12 +2,6 @@
 extends Node2D
 class_name PlacerOnSpline2D
 
-
-#@export var spline: Path2D:
-#	set(value):
-#		spline = value
-#		_update_instances()
-
 @export var scene_to_place: PackedScene:
 	set(value):
 		scene_to_place = value
@@ -29,29 +23,39 @@ func _ready() -> void:
 		_ensure_group_exists()
 		_ensure_spline_exists()
 		_update_instances()
+	else:
+		_update_instances()
 
 func _setExistingNodes() -> void:
 	if spline == null or groupNode == null:
 		for node:Node in get_children(false):
-			if node is Node2D:
+			if node is Node2D\
+				and node.name.begins_with("Instances"):
 				groupNode = node
-			elif node is Path2D:
+				for inst in groupNode.get_children(false):
+					placed_nodes.push_back(inst)
+			elif node is Path2D\
+			 	and node.name.begins_with("Spline-Editor"):
 				spline = node
 
-
-func _notification(what) -> void:
-	print("xxxx: " + str(what))
-	if what == NOTIFICATION_POSTINITIALIZE:
-		_update_instances()
-
+func splineChanged():
+	_update_instances()
 
 func _update_instances() -> void:
+	_setExistingNodes()
+
 	if not Engine.is_editor_hint():
+		if spline and !spline.property_list_changed.is_connected(splineChanged):
+			spline.property_list_changed.connect(splineChanged)
+		if spline and spline and spline.curve\
+			and !spline.curve.changed.is_connected(splineChanged):
+			spline.curve.changed.connect(splineChanged)
+		_moveInstances()
 		return
-	
+
 	_ensure_group_exists()
 	_ensure_spline_exists()
-	
+
 	if scene_to_place == null\
 			or spline == null\
 			or spline.curve == null:
@@ -59,7 +63,6 @@ func _update_instances() -> void:
 	
 	if spline.position.length() > 0:
 		spline.position = Vector2.ZERO
-	
 	
 	if !spline.curve.changed.is_connected(_update_instances):
 		spline.curve.changed.connect(_update_instances)
@@ -71,6 +74,8 @@ func _update_instances() -> void:
 
 
 func _moveInstances() -> void:
+	if spline == null:
+		return
 	var curve := spline.curve
 	if curve == null:
 		return
@@ -84,10 +89,7 @@ func _moveInstances() -> void:
 		var t := float(i) / float(count - 1) if count > 1 else 0.0
 		var dist := t * total_length
 		var pos = curve.sample_baked(dist)
-
 		var inst := groupNode.get_child(i)
-		#inst.name = "%s_%d" % [scene_to_place.\
-		#	resource_path.get_file().get_basename(), i]
 		inst.position = pos
 
 
@@ -120,7 +122,6 @@ func _redoInstances() -> void:
 		# MUST BE BELOW ADD_CHILD
 		inst.owner = get_tree().edited_scene_root
 		inst.position = pos
-
 		placed_nodes.append(inst)
 
 
@@ -132,7 +133,12 @@ func _ensure_spline_exists() -> void:
 	spline.name = "Spline-Editor"
 	add_child(spline)
 	#needs to be AFTER add_child!
-	spline.owner = get_tree().edited_scene_root
+	var tree:SceneTree = get_tree()
+	if tree != null:
+		spline.owner = tree.edited_scene_root
+	else:
+		spline = null
+		return
 
 	# Give it a default curve if empty
 	if spline.curve == null:
@@ -141,12 +147,18 @@ func _ensure_spline_exists() -> void:
 		c.add_point(Vector2(200, 0))
 		spline.curve = c
 
+
 func _ensure_group_exists() -> void:
-	if groupNode and is_instance_valid(groupNode):
+	if groupNode\
+		and is_instance_valid(groupNode):
 		return
 	
 	groupNode = Node2D.new()
 	groupNode.name = "Instances"
 	add_child(groupNode)
-	groupNode.owner = get_tree().edited_scene_root
-	
+	var tree:SceneTree = get_tree()
+	if tree != null:
+		groupNode.owner = tree.edited_scene_root
+	else:
+		groupNode = null
+		return

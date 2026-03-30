@@ -42,3 +42,5 @@ func _redoPoints():
 
 		add_point(Vector2(x, y))
 	
+	self.emit_changed()
+	
