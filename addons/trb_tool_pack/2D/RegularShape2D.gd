@@ -7,13 +7,13 @@ class_name RegularShape2D
 	set(val):
 		radius = max(val, 0.001)
 		_redoPoints()
-@export var pointCount:int = 8:
+@export var point_count:int = 8:
 	set(val):
-		pointCount = max(val, 3)
+		point_count = max(val, 3)
 		_redoPoints()
-@export var rotationInDegree:float = 0.0:
+@export var rotation_deg:float = 0.0:
 	set(val):
-		rotationInDegree = val
+		rotation_deg = val
 		_redoPoints()
 
 func _ready() -> void:
@@ -23,20 +23,20 @@ func _init():
 	_redoPoints()
 
 func _redoPoints():
-	if pointCount < 3:
+	if point_count < 3:
 		return
 	points.clear()
 	
-	var newPoints:PackedVector2Array
-	var rot := deg_to_rad(rotationInDegree)
+	var new_points:PackedVector2Array
+	var rot := deg_to_rad(rotation_deg)
 	
-	for i in range(pointCount):
-		var dt := (TAU / float(pointCount)) * i + rot
+	for i in range(point_count):
+		var dt := (TAU / float(point_count)) * i + rot
 		var x := sin(dt) * radius
 		var y := cos(dt) * radius
 
-		newPoints.append(Vector2(x, y))
+		new_points.append(Vector2(x, y))
 	
-	self.set_point_cloud(newPoints)
+	self.set_point_cloud(new_points)
 	self.emit_changed()
 	

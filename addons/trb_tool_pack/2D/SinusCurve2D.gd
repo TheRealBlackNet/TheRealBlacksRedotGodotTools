@@ -7,17 +7,17 @@ class_name SinusCurve2D
 	set(val):
 		frequency = max(val, 0.001)
 		_redoPoints()
-@export var points:int = 20:
+@export var point_line:int = 20:
 	set(val):
-		points = max(val, 2)
+		point_line = max(val, 2)
 		_redoPoints()
-@export var boxSize:Vector2 = Vector2(300.0, 75.0):
+@export var box_size:Vector2 = Vector2(300.0, 75.0):
 	set(val):
-		boxSize = val
+		box_size = val
 		_redoPoints()
-@export var deltaTime:float = 0.0:
+@export var delta_time:float = 0.0:
 	set(val):
-		deltaTime = val
+		delta_time = val
 		_redoPoints()
 
 func _ready() -> void:
@@ -27,18 +27,18 @@ func _init():
 	_redoPoints()
 
 func _redoPoints():
-	if points <= 0:
+	if point_line <= 0:
 		return
 
-	var dx := boxSize.x / float(points - 1)
+	var dx := box_size.x / float(point_line - 1)
 
 	clear_points()
-	for i in range(points):
+	for i in range(point_line):
 		var x := i * dx
-		var t := float(i) / float(points - 1)
+		var t := float(i) / float(point_line - 1)
 		var y := sin(\
-			t * frequency * TAU + deltaTime * TAU)\
-			* boxSize.y / 2.0
+			t * frequency * TAU + delta_time * TAU)\
+			* box_size.y / 2.0
 
 		add_point(Vector2(x, y))
 	

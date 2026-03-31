@@ -1,58 +1,71 @@
-[gd_scene load_steps=15 format=3 uid="uid://rh7fahautx7m"]
+[gd_scene load_steps=17 format=3 uid="uid://rh7fahautx7m"]
 
 [ext_resource type="Script" uid="uid://87i0qruumejl" path="res://ToolPackTests/2d_tools_test.gd" id="1_1lx4o"]
 [ext_resource type="Script" uid="uid://cij1mgb188xwi" path="res://addons/trb_tool_pack/2D/SinusCurve2D.gd" id="1_alqy0"]
 [ext_resource type="PackedScene" uid="uid://c0t7y3lhvk1yj" path="res://ToolPackTests/TestItem.tscn" id="3_a6608"]
 [ext_resource type="Script" uid="uid://cgxc25y8rgf4v" path="res://addons/trb_tool_pack/2D/RegularCollisionPolygon2D.gd" id="3_ktpfa"]
 [ext_resource type="Script" uid="uid://dg0hmmqocuy74" path="res://addons/trb_tool_pack/2D/StarCollisionPolygon2D.gd" id="4_2lq74"]
-[ext_resource type="Script" uid="uid://dr81agdqkach1" path="res://addons/trb_tool_pack/2D/PlacerOnSpline2D.gd" id="4_vp2bq"]
 [ext_resource type="PackedScene" uid="uid://b6n7ekhp3yqca" path="res://ToolPackTests/PlayerTest.tscn" id="5_2b2ve"]
 [ext_resource type="Script" uid="uid://b6nft3ppgywvj" path="res://addons/trb_tool_pack/2D/RegularShape2D.gd" id="6_8wgqo"]
+[ext_resource type="Script" uid="uid://bbcewwaqtxf71" path="res://addons/trb_tool_pack/2D/CogCollisionPolygon2D.gd" id="6_ibymt"]
+[ext_resource type="Script" uid="uid://dr81agdqkach1" path="res://addons/trb_tool_pack/2D/PlacerOnSpline2D.gd" id="8_ibymt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alqy0"]
 size = Vector2(300, 75)
 
+[sub_resource type="Curve2D" id="Curve2D_1lx4o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10.3448, 15.7458, 0, 0, 0, 0, 20.6897, 28.5811, 0, 0, 0, 0, 31.0345, 36.1331, 0, 0, 0, 0, 41.3793, 37.006, 0, 0, 0, 0, 51.7241, 31.0383, 0, 0, 0, 0, 62.069, 19.3333, 0, 0, 0, 0, 72.4138, 4.05446, 0, 0, 0, 0, 82.7586, -11.9738, 0, 0, 0, 0, 93.1034, -25.7887, 0, 0, 0, 0, 103.448, -34.8366, 0, 0, 0, 0, 113.793, -37.445, 0, 0, 0, 0, 124.138, -33.1317, 0, 0, 0, 0, 134.483, -22.694, 0, 0, 0, 0, 144.828, -8.06139, 0, 0, 0, 0, 155.172, 8.06139, 0, 0, 0, 0, 165.517, 22.694, 0, 0, 0, 0, 175.862, 33.1317, 0, 0, 0, 0, 186.207, 37.445, 0, 0, 0, 0, 196.552, 34.8366, 0, 0, 0, 0, 206.897, 25.7887, 0, 0, 0, 0, 217.241, 11.9738, 0, 0, 0, 0, 227.586, -4.05446, 0, 0, 0, 0, 237.931, -19.3333, 0, 0, 0, 0, 248.276, -31.0383, 0, 0, 0, 0, 258.621, -37.006, 0, 0, 0, 0, 268.966, -36.1331, 0, 0, 0, 0, 279.31, -28.5811, 0, 0, 0, 0, 289.655, -15.7458, 0, 0, 0, 0, 300, -1.83691e-14)
+}
+point_count = 30
+script = ExtResource("1_alqy0")
+frequency = 2.0
+point_line = 30
+box_size = Vector2(300, 75)
+delta_time = 0.0
+metadata/_custom_type_script = "uid://cij1mgb188xwi"
+
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2b2ve"]
-points = PackedVector2Array(-18, -38, 24, -10, 24, 122, -4, 126, -36, 9)
+points = PackedVector2Array(-10, -37, 26, -2, 0, 99, -16, 100, -41, -8)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ktpfa"]
-points = PackedVector2Array(-50, -9.18455e-15, -35.3553, -35.3553, 6.12303e-15, -50, 35.3553, -35.3553, 50, 3.06152e-15, 35.3553, 35.3553, 0, 50, -35.3553, 35.3553, -50, -9.18455e-15)
+points = PackedVector2Array(-43.3013, -25, 6.12303e-15, -50, 43.3013, -25, 43.3013, 25, 0, 50, -43.3013, 25, -43.3013, -25)
 script = ExtResource("6_8wgqo")
 radius = 50.0
-pointCount = 8
-rotationInDegree = 0.0
+point_count = 6
+rotation_deg = 0.0
 metadata/_custom_type_script = "uid://b6nft3ppgywvj"
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2lq74"]
-points = PackedVector2Array(-35.3553, -35.3553, 35.3553, -35.3553, 35.3553, 35.3553, -35.3553, 35.3553, -35.3553, -35.3553)
+points = PackedVector2Array(-43.3013, -25, 43.3013, -25, 0, 50, -43.3013, -25)
 script = ExtResource("6_8wgqo")
 radius = 50.0
-pointCount = 4
-rotationInDegree = 45.0
+point_count = 3
+rotation_deg = 0.0
 metadata/_custom_type_script = "uid://b6nft3ppgywvj"
 
 [sub_resource type="Curve2D" id="Curve2D_alqy0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.01342, 13.0804, 0, 0, 0, 0, 4.02685, 25.5815, 0, 0, 0, 0, 6.04027, 36.9495, 0, 0, 0, 0, 8.05369, 46.681, 0, 0, 0, 0, 10.0671, 54.3449, 0, 0, 0, 0, 12.0805, 59.6018, 0, 0, 0, 0, 14.094, 62.2189, 0, 0, 0, 0, 16.1074, 62.0802, 0, 0, 0, 0, 18.1208, 59.192, 0, 0, 0, 0, 20.1342, 53.682, 0, 0, 0, 0, 22.1477, 45.7944, 0, 0, 0, 0, 24.1611, 35.8785, 0, 0, 0, 0, 26.1745, 24.3735, 0, 0, 0, 0, 28.1879, 11.789, 0, 0, 0, 0, 30.2013, -1.31768, 0, 0, 0, 0, 32.2148, -14.366, 0, 0, 0, 0, 34.2282, -26.778, 0, 0, 0, 0, 36.2416, -38.004, 0, 0, 0, 0, 38.255, -47.5468, 0, 0, 0, 0, 40.2685, -54.9836, 0, 0, 0, 0, 42.2819, -59.9852, 0, 0, 0, 0, 44.2953, -62.3299, 0, 0, 0, 0, 46.3087, -61.914, 0, 0, 0, 0, 48.3221, -58.7558, 0, 0, 0, 0, 50.3356, -52.9952, 0, 0, 0, 0, 52.349, -44.8875, 0, 0, 0, 0, 54.3624, -34.7916, 0, 0, 0, 0, 56.3758, -23.1547, 0, 0, 0, 0, 58.3893, -10.4923, 0, 0, 0, 0, 60.4027, 2.63478, 0, 0, 0, 0, 62.4161, 15.6452, 0, 0, 0, 0, 64.4295, 27.9627, 0, 0, 0, 0, 66.443, 39.0417, 0, 0, 0, 0, 68.4564, 48.3914, 0, 0, 0, 0, 70.4698, 55.5979, 0, 0, 0, 0, 72.4832, 60.3419, 0, 0, 0, 0, 74.4966, 62.4132, 0, 0, 0, 0, 76.5101, 61.7202, 0, 0, 0, 0, 78.5235, 58.2935, 0, 0, 0, 0, 80.5369, 52.2849, 0, 0, 0, 0, 82.5503, 43.9606, 0, 0, 0, 0, 84.5638, 33.6892, 0, 0, 0, 0, 86.5772, 21.9257, 0, 0, 0, 0, 88.5906, 9.19102, 0, 0, 0, 0, 90.604, -3.95071, 0, 0, 0, 0, 92.6174, -16.9175, 0, 0, 0, 0, 94.6309, -29.1349, 0, 0, 0, 0, 96.6443, -40.062, 0, 0, 0, 0, 98.6577, -49.2146, 0, 0, 0, 0, 100.671, -56.1875, 0, 0, 0, 0, 102.685, -60.6717, 0, 0, 0, 0, 104.698, -62.4687, 0, 0, 0, 0, 106.711, -61.499, 0, 0, 0, 0, 108.725, -57.8053, 0, 0, 0, 0, 110.738, -51.5514, 0, 0, 0, 0, 112.752, -43.0142, 0, 0, 0, 0, 114.765, -32.5718, 0, 0, 0, 0, 116.779, -20.6869, 0, 0, 0, 0, 118.792, -7.88562, 0, 0, 0, 0, 120.805, 5.26488, 0, 0, 0, 0, 122.819, 18.1822, 0, 0, 0, 0, 124.832, 30.2942, 0, 0, 0, 0, 126.846, 41.0644, 0, 0, 0, 0, 128.859, 50.0159, 0, 0, 0, 0, 130.872, 56.752, 0, 0, 0, 0, 132.886, 60.9746, 0, 0, 0, 0, 134.899, 62.4965, 0, 0, 0, 0, 136.913, 61.2504, 0, 0, 0, 0, 138.926, 57.2914, 0, 0, 0, 0, 140.94, 50.7949, 0, 0, 0, 0, 142.953, 42.0487, 0, 0, 0, 0, 144.966, 31.44, 0, 0, 0, 0, 146.98, 19.4388, 0, 0, 0, 0, 148.993, 6.57671, 0, 0, 0, 0, 151.007, -6.57671, 0, 0, 0, 0, 153.02, -19.4388, 0, 0, 0, 0, 155.034, -31.44, 0, 0, 0, 0, 157.047, -42.0487, 0, 0, 0, 0, 159.06, -50.7949, 0, 0, 0, 0, 161.074, -57.2914, 0, 0, 0, 0, 163.087, -61.2504, 0, 0, 0, 0, 165.101, -62.4965, 0, 0, 0, 0, 167.114, -60.9746, 0, 0, 0, 0, 169.128, -56.752, 0, 0, 0, 0, 171.141, -50.0159, 0, 0, 0, 0, 173.154, -41.0644, 0, 0, 0, 0, 175.168, -30.2942, 0, 0, 0, 0, 177.181, -18.1822, 0, 0, 0, 0, 179.195, -5.26488, 0, 0, 0, 0, 181.208, 7.88562, 0, 0, 0, 0, 183.221, 20.6869, 0, 0, 0, 0, 185.235, 32.5718, 0, 0, 0, 0, 187.248, 43.0142, 0, 0, 0, 0, 189.262, 51.5514, 0, 0, 0, 0, 191.275, 57.8053, 0, 0, 0, 0, 193.289, 61.499, 0, 0, 0, 0, 195.302, 62.4687, 0, 0, 0, 0, 197.315, 60.6717, 0, 0, 0, 0, 199.329, 56.1875, 0, 0, 0, 0, 201.342, 49.2146, 0, 0, 0, 0, 203.356, 40.062, 0, 0, 0, 0, 205.369, 29.1349, 0, 0, 0, 0, 207.383, 16.9175, 0, 0, 0, 0, 209.396, 3.95071, 0, 0, 0, 0, 211.409, -9.19102, 0, 0, 0, 0, 213.423, -21.9257, 0, 0, 0, 0, 215.436, -33.6892, 0, 0, 0, 0, 217.45, -43.9606, 0, 0, 0, 0, 219.463, -52.2849, 0, 0, 0, 0, 221.477, -58.2935, 0, 0, 0, 0, 223.49, -61.7202, 0, 0, 0, 0, 225.503, -62.4132, 0, 0, 0, 0, 227.517, -60.3419, 0, 0, 0, 0, 229.53, -55.5979, 0, 0, 0, 0, 231.544, -48.3914, 0, 0, 0, 0, 233.557, -39.0417, 0, 0, 0, 0, 235.57, -27.9627, 0, 0, 0, 0, 237.584, -15.6452, 0, 0, 0, 0, 239.597, -2.63478, 0, 0, 0, 0, 241.611, 10.4923, 0, 0, 0, 0, 243.624, 23.1547, 0, 0, 0, 0, 245.638, 34.7916, 0, 0, 0, 0, 247.651, 44.8875, 0, 0, 0, 0, 249.664, 52.9952, 0, 0, 0, 0, 251.678, 58.7558, 0, 0, 0, 0, 253.691, 61.914, 0, 0, 0, 0, 255.705, 62.3299, 0, 0, 0, 0, 257.718, 59.9852, 0, 0, 0, 0, 259.732, 54.9836, 0, 0, 0, 0, 261.745, 47.5468, 0, 0, 0, 0, 263.758, 38.004, 0, 0, 0, 0, 265.772, 26.778, 0, 0, 0, 0, 267.785, 14.366, 0, 0, 0, 0, 269.799, 1.31768, 0, 0, 0, 0, 271.812, -11.789, 0, 0, 0, 0, 273.826, -24.3735, 0, 0, 0, 0, 275.839, -35.8785, 0, 0, 0, 0, 277.852, -45.7944, 0, 0, 0, 0, 279.866, -53.682, 0, 0, 0, 0, 281.879, -59.192, 0, 0, 0, 0, 283.893, -62.0802, 0, 0, 0, 0, 285.906, -62.2189, 0, 0, 0, 0, 287.919, -59.6018, 0, 0, 0, 0, 289.933, -54.3449, 0, 0, 0, 0, 291.946, -46.681, 0, 0, 0, 0, 293.96, -36.9495, 0, 0, 0, 0, 295.973, -25.5815, 0, 0, 0, 0, 297.987, -13.0804, 0, 0, 0, 0, 300, -7.65379e-14)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6.12245, 29.9055, 0, 0, 0, 0, 12.2449, 47.9334, 0, 0, 0, 0, 18.3673, 46.9234, 0, 0, 0, 0, 24.4898, 27.2767, 0, 0, 0, 0, 30.6122, -3.20351, 0, 0, 0, 0, 36.7347, -32.4114, 0, 0, 0, 0, 42.8571, -48.7464, 0, 0, 0, 0, 48.9796, -45.7206, 0, 0, 0, 0, 55.102, -24.5359, 0, 0, 0, 0, 61.2245, 6.39386, 0, 0, 0, 0, 67.3469, 34.7841, 0, 0, 0, 0, 73.4694, 49.3591, 0, 0, 0, 0, 79.5918, 44.33, 0, 0, 0, 0, 85.7143, 21.6942, 0, 0, 0, 0, 91.8367, -9.55793, 0, 0, 0, 0, 97.9592, -37.0139, 0, 0, 0, 0, 104.082, -49.769, 0, 0, 0, 0, 110.204, -42.7571, 0, 0, 0, 0, 116.327, -18.7633, 0, 0, 0, 0, 122.449, 12.6827, 0, 0, 0, 0, 128.571, 39.0916, 0, 0, 0, 0, 134.694, 49.9743, 0, 0, 0, 0, 140.816, 41.0086, 0, 0, 0, 0, 146.939, 15.7554, 0, 0, 0, 0, 153.061, -15.7554, 0, 0, 0, 0, 159.184, -41.0086, 0, 0, 0, 0, 165.306, -49.9743, 0, 0, 0, 0, 171.429, -39.0916, 0, 0, 0, 0, 177.551, -12.6827, 0, 0, 0, 0, 183.673, 18.7633, 0, 0, 0, 0, 189.796, 42.7571, 0, 0, 0, 0, 195.918, 49.769, 0, 0, 0, 0, 202.041, 37.0139, 0, 0, 0, 0, 208.163, 9.55793, 0, 0, 0, 0, 214.286, -21.6942, 0, 0, 0, 0, 220.408, -44.33, 0, 0, 0, 0, 226.531, -49.3591, 0, 0, 0, 0, 232.653, -34.7841, 0, 0, 0, 0, 238.776, -6.39386, 0, 0, 0, 0, 244.898, 24.5359, 0, 0, 0, 0, 251.02, 45.7206, 0, 0, 0, 0, 257.143, 48.7464, 0, 0, 0, 0, 263.265, 32.4114, 0, 0, 0, 0, 269.388, 3.20351, 0, 0, 0, 0, 275.51, -27.2767, 0, 0, 0, 0, 281.633, -46.9234, 0, 0, 0, 0, 287.755, -47.9334, 0, 0, 0, 0, 293.878, -29.9055, 0, 0, 0, 0, 300, -6.12303e-14)
 }
-point_count = 150
+point_count = 50
 script = ExtResource("1_alqy0")
 frequency = 5.0
-points = 150
-boxSize = Vector2(300, 125)
-deltaTime = 0.0
+point_line = 50
+box_size = Vector2(300, 100)
+delta_time = 0.0
 metadata/_custom_type_script = "uid://cij1mgb188xwi"
 
-[sub_resource type="Curve2D" id="Curve2D_1lx4o"]
+[sub_resource type="Curve2D" id="Curve2D_70uka"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15.7895, 23.033, 0, 0, 0, 0, 31.5789, 36.3525, 0, 0, 0, 0, 47.3684, 34.3415, 0, 0, 0, 0, 63.1579, 17.848, 0, 0, 0, 0, 78.9474, -6.1723, 0, 0, 0, 0, 94.7368, -27.5896, 0, 0, 0, 0, 110.526, -37.3719, 0, 0, 0, 0, 126.316, -31.3937, 0, 0, 0, 0, 142.105, -12.1762, 0, 0, 0, 0, 157.895, 12.1762, 0, 0, 0, 0, 173.684, 31.3937, 0, 0, 0, 0, 189.474, 37.3719, 0, 0, 0, 0, 205.263, 27.5896, 0, 0, 0, 0, 221.053, 6.1723, 0, 0, 0, 0, 236.842, -17.848, 0, 0, 0, 0, 252.632, -34.3415, 0, 0, 0, 0, 268.421, -36.3525, 0, 0, 0, 0, 284.211, -23.033, 0, 0, 0, 0, 300, -1.83691e-14)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20.6897, 15.7458, 0, 0, 0, 0, 41.3793, 28.5811, 0, 0, 0, 0, 62.069, 36.1331, 0, 0, 0, 0, 82.7586, 37.006, 0, 0, 0, 0, 103.448, 31.0383, 0, 0, 0, 0, 124.138, 19.3333, 0, 0, 0, 0, 144.828, 4.05446, 0, 0, 0, 0, 165.517, -11.9738, 0, 0, 0, 0, 186.207, -25.7887, 0, 0, 0, 0, 206.897, -34.8366, 0, 0, 0, 0, 227.586, -37.445, 0, 0, 0, 0, 248.276, -33.1317, 0, 0, 0, 0, 268.966, -22.694, 0, 0, 0, 0, 289.655, -8.06139, 0, 0, 0, 0, 310.345, 8.06139, 0, 0, 0, 0, 331.034, 22.694, 0, 0, 0, 0, 351.724, 33.1317, 0, 0, 0, 0, 372.414, 37.445, 0, 0, 0, 0, 393.103, 34.8366, 0, 0, 0, 0, 413.793, 25.7887, 0, 0, 0, 0, 434.483, 11.9738, 0, 0, 0, 0, 455.172, -4.05446, 0, 0, 0, 0, 475.862, -19.3333, 0, 0, 0, 0, 496.552, -31.0383, 0, 0, 0, 0, 517.241, -37.006, 0, 0, 0, 0, 537.931, -36.1331, 0, 0, 0, 0, 558.621, -28.5811, 0, 0, 0, 0, 579.31, -15.7458, 0, 0, 0, 0, 600, -1.83691e-14)
 }
-point_count = 20
+point_count = 30
 script = ExtResource("1_alqy0")
 frequency = 2.0
-points = 20
-boxSize = Vector2(300, 75)
-deltaTime = 0.0
+point_line = 30
+box_size = Vector2(600, 75)
+delta_time = 0.0
 metadata/_custom_type_script = "uid://cij1mgb188xwi"
 
 [node name="2dToolsTest" type="Node2D"]
@@ -61,77 +74,86 @@ script = ExtResource("1_1lx4o")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="SINBOX_DISPLAY" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(154, 176)
+position = Vector2(152, 43)
 shape = SubResource("RectangleShape2D_alqy0")
 
+[node name="Path2D2_Mov1_Master" type="Path2D" parent="StaticBody2D/SINBOX_DISPLAY"]
+unique_name_in_owner = true
+position = Vector2(-150, 0.371994)
+curve = SubResource("Curve2D_1lx4o")
+
 [node name="TEST" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(46, 314)
+position = Vector2(42, 163)
 shape = SubResource("ConvexPolygonShape2D_2b2ve")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(183, 373)
+position = Vector2(50, 344)
 shape = SubResource("ConvexPolygonShape2D_ktpfa")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(261, 447)
+position = Vector2(143, 395)
 shape = SubResource("ConvexPolygonShape2D_2lq74")
 
 [node name="RegularCollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(435, 466)
-polygon = PackedVector2Array(0, 50, 35.3553, 35.3553, 50, 3.06152e-15, 35.3553, -35.3553, 6.12303e-15, -50, -35.3553, -35.3553, -50, -9.18455e-15, -35.3553, 35.3553)
+position = Vector2(463, 425)
+polygon = PackedVector2Array(0, 50, 43.3013, 25, 43.3013, -25, 6.12303e-15, -50, -43.3013, -25, -43.3013, 25)
 script = ExtResource("3_ktpfa")
+point_count = 6
 metadata/_custom_type_script = "uid://cgxc25y8rgf4v"
 
 [node name="RegularCollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(578, 472)
+position = Vector2(632, 464)
 polygon = PackedVector2Array(35.3553, 35.3553, 35.3553, -35.3553, -35.3553, -35.3553, -35.3553, 35.3553)
 script = ExtResource("3_ktpfa")
-pointCount = 4
-rotationInDegree = 45.0
+point_count = 4
+rotation_deg = 45.0
 metadata/_custom_type_script = "uid://cgxc25y8rgf4v"
 
 [node name="RegularCollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(1068, 201)
-polygon = PackedVector2Array(70.7107, 70.7107, 92.388, 38.2683, 100, 6.12303e-15, 92.388, -38.2683, 70.7107, -70.7107, 38.2683, -92.388, 1.22461e-14, -100, -38.2683, -92.388, -70.7107, -70.7107, -92.388, -38.2683, -100, -1.83691e-14, -92.388, 38.2683, -70.7107, 70.7107, -38.2683, 92.388, -2.44921e-14, 100, 38.2683, 92.388)
+polygon = PackedVector2Array(0, 100, 38.2683, 92.388, 70.7107, 70.7107, 92.388, 38.2683, 100, 6.12303e-15, 92.388, -38.2683, 70.7107, -70.7107, 38.2683, -92.388, 1.22461e-14, -100, -38.2683, -92.388, -70.7107, -70.7107, -92.388, -38.2683, -100, -1.83691e-14, -92.388, 38.2683, -70.7107, 70.7107, -38.2683, 92.388)
 script = ExtResource("3_ktpfa")
 radius = 100.0
-pointCount = 16
-rotationInDegree = 45.0
+point_count = 16
 metadata/_custom_type_script = "uid://cgxc25y8rgf4v"
 
 [node name="StarCollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(723, 481)
-polygon = PackedVector2Array(0, 70, 9.27051, 28.5317, 41.145, 56.6312, 24.2705, 17.6336, 66.574, 21.6312, 30, 1.83691e-15, 66.574, -21.6312, 24.2705, -17.6336, 41.145, -56.6312, 9.27051, -28.5317, 8.57224e-15, -70, -9.27051, -28.5317, -41.145, -56.6312, -24.2705, -17.6336, -66.574, -21.6312, -30, -5.51073e-15, -66.574, 21.6312, -24.2705, 17.6336, -41.145, 56.6312, -9.27051, 28.5317)
+position = Vector2(434, 4)
+polygon = PackedVector2Array(0, 60, 5.22105, 39.6578, 15.5291, 57.9556, 15.3073, 36.9552, 30, 51.9615, 24.3505, 31.7341, 42.4264, 42.4264, 31.7341, 24.3505, 51.9615, 30, 36.9552, 15.3073, 57.9556, 15.5291, 39.6578, 5.22105, 60, 3.67382e-15, 39.6578, -5.22105, 57.9556, -15.5291, 36.9552, -15.3073, 51.9615, -30, 31.7341, -24.3505, 42.4264, -42.4264, 24.3505, -31.7341, 30, -51.9615, 15.3073, -36.9552, 15.5291, -57.9556, 5.22105, -39.6578, 7.34764e-15, -60, -5.22105, -39.6578, -15.5291, -57.9556, -15.3073, -36.9552, -30, -51.9615, -24.3505, -31.7341, -42.4264, -42.4264, -31.7341, -24.3505, -51.9615, -30, -36.9552, -15.3073, -57.9556, -15.5291, -39.6578, -5.22105, -60, -1.10215e-14, -39.6578, 5.22105, -57.9556, 15.5291, -36.9552, 15.3073, -51.9615, 30, -31.7341, 24.3505, -42.4264, 42.4264, -24.3505, 31.7341, -30, 51.9615, -15.3073, 36.9552, -15.5291, 57.9556, -5.22105, 39.6578)
 script = ExtResource("4_2lq74")
-radiusInner = 30.0
-radiusOuter = 70.0
-pointCount = 10
+point_count = 24
 metadata/_custom_type_script = "uid://dg0hmmqocuy74"
 
 [node name="StarCollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(921, 439)
-polygon = PackedVector2Array(0, 50, 23.5114, 32.3607, 47.5528, 15.4508, 38.0423, -12.3607, 29.3893, -40.4509, 4.89843e-15, -40, -29.3893, -40.4509, -38.0423, -12.3607, -47.5528, 15.4508, -23.5114, 32.3607)
+position = Vector2(813, 75)
+polygon = PackedVector2Array(0, 60, 28.2843, 28.2843, 60, 3.67382e-15, 28.2843, -28.2843, 7.34764e-15, -60, -28.2843, -28.2843, -60, -1.10215e-14, -28.2843, 28.2843)
 script = ExtResource("4_2lq74")
-radiusOuter = 50.0
-pointCount = 5
 metadata/_custom_type_script = "uid://dg0hmmqocuy74"
 
+[node name="StarCollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(695, 83)
+polygon = PackedVector2Array(0, 60, 20, 34.641, 51.9615, 30, 40, 2.44921e-15, 51.9615, -30, 20, -34.641, 7.34764e-15, -60, -20, -34.641, -51.9615, -30, -40, -7.34764e-15, -51.9615, 30, -20, 34.641)
+script = ExtResource("4_2lq74")
+point_count = 6
+metadata/_custom_type_script = "uid://dg0hmmqocuy74"
+
+[node name="CogCollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(874, 608)
+polygon = PackedVector2Array(39.1259, -8.31647, 59.8816, -3.76743, 59.8816, 3.76743, 39.1259, 8.31647, 38.0423, 12.3607, 53.7427, 26.6781, 49.9753, 33.2035, 29.7258, 26.7652, 26.7652, 29.7258, 33.2035, 49.9753, 26.6781, 53.7427, 12.3607, 38.0423, 8.31647, 39.1259, 3.76743, 59.8816, -3.76743, 59.8816, -8.31647, 39.1259, -12.3607, 38.0423, -26.6781, 53.7427, -33.2035, 49.9753, -26.7652, 29.7258, -29.7258, 26.7652, -49.9753, 33.2035, -53.7427, 26.6781, -38.0423, 12.3607, -39.1259, 8.31646, -59.8816, 3.76743, -59.8816, -3.76744, -39.1259, -8.31647, -38.0423, -12.3607, -53.7427, -26.6781, -49.9753, -33.2035, -29.7258, -26.7652, -26.7652, -29.7258, -33.2035, -49.9753, -26.6781, -53.7427, -12.3607, -38.0423, -8.31648, -39.1259, -3.76743, -59.8816, 3.76743, -59.8816, 8.31646, -39.1259, 12.3607, -38.0423, 26.6781, -53.7427, 33.2035, -49.9753, 26.7652, -29.7258, 29.7258, -26.7652, 49.9753, -33.2035, 53.7427, -26.6781, 38.0423, -12.3607)
+script = ExtResource("6_ibymt")
+metadata/_custom_type_script = "uid://bbcewwaqtxf71"
+
+[node name="CogCollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1038, 595)
+polygon = PackedVector2Array(99.6195, -8.71557, 119.959, -3.14123, 119.959, 3.14123, 99.6195, 8.71557, 98.4808, 17.3648, 116.684, 28.0134, 115.058, 34.0818, 93.9693, 34.202, 90.6308, 42.2618, 105.458, 57.2591, 102.317, 62.6998, 81.9152, 57.3576, 76.6044, 64.2788, 87.0449, 82.6025, 82.6025, 87.0449, 64.2788, 76.6044, 57.3576, 81.9152, 62.6998, 102.317, 57.2591, 105.458, 42.2618, 90.6308, 34.202, 93.9693, 34.0818, 115.058, 28.0135, 116.684, 17.3648, 98.4808, 8.71558, 99.6195, 3.14124, 119.959, -3.14124, 119.959, -8.71558, 99.6195, -17.3648, 98.4808, -28.0134, 116.684, -34.0818, 115.058, -34.202, 93.9693, -42.2618, 90.6308, -57.259, 105.458, -62.6998, 102.317, -57.3576, 81.9152, -64.2788, 76.6044, -82.6025, 87.0449, -87.0449, 82.6025, -76.6044, 64.2788, -81.9152, 57.3576, -102.317, 62.6998, -105.458, 57.259, -90.6308, 42.2618, -93.9693, 34.202, -115.058, 34.0818, -116.684, 28.0134, -98.4808, 17.3648, -99.6195, 8.71556, -119.959, 3.14123, -119.959, -3.14123, -99.6195, -8.71558, -98.4808, -17.3648, -116.684, -28.0134, -115.058, -34.0818, -93.9693, -34.202, -90.6308, -42.2618, -105.458, -57.259, -102.317, -62.6998, -81.9152, -57.3576, -76.6044, -64.2788, -87.0449, -82.6026, -82.6025, -87.0449, -64.2788, -76.6045, -57.3576, -81.9152, -62.6998, -102.317, -57.2591, -105.458, -42.2618, -90.6308, -34.202, -93.9693, -34.0818, -115.058, -28.0135, -116.684, -17.3648, -98.4808, -8.71557, -99.6195, -3.14121, -119.959, 3.14122, -119.959, 8.71557, -99.6195, 17.3648, -98.4808, 28.0135, -116.684, 34.0818, -115.058, 34.202, -93.9693, 42.2618, -90.6308, 57.2591, -105.458, 62.6999, -102.317, 57.3576, -81.9152, 64.2788, -76.6044, 82.6025, -87.0449, 87.0449, -82.6025, 76.6044, -64.2788, 81.9152, -57.3577, 102.317, -62.6998, 105.458, -57.259, 90.6308, -42.2618, 93.9693, -34.202, 115.058, -34.0819, 116.684, -28.0134, 98.4808, -17.3648)
+script = ExtResource("6_ibymt")
+tooth_count = 24
+flank_angle_deg = 5.0
+root_radius = 100.0
+tip_radius = 120.0
+metadata/_custom_type_script = "uid://bbcewwaqtxf71"
+
 [node name="Node2D" type="Node2D" parent="."]
-
-[node name="Path2D" type="Path2D" parent="Node2D"]
-position = Vector2(2, 64)
-curve = SubResource("Curve2D_alqy0")
-
-[node name="Path2D2_Mov1" type="Path2D" parent="Node2D"]
-position = Vector2(4, 176.372)
-curve = SubResource("Curve2D_1lx4o")
-
-[node name="Path2D3_Moving" type="Path2D" parent="Node2D"]
-position = Vector2(1, 61)
-curve = SubResource("Curve2D_1lx4o")
-
-[node name="TestItem" parent="Node2D" instance=ExtResource("3_a6608")]
-position = Vector2(19, 234)
 
 [node name="Instancesx" type="Node2D" parent="Node2D"]
 position = Vector2(13, 635)
@@ -168,64 +190,102 @@ position = Vector2(272.492, -20.2337)
 [node name="TestItem_10" parent="Node2D/Instancesx" instance=ExtResource("3_a6608")]
 position = Vector2(300, 0)
 
+[node name="TestItem" parent="Node2D" instance=ExtResource("3_a6608")]
+position = Vector2(14, 97)
+
+[node name="Path2D" type="Path2D" parent="Node2D"]
+position = Vector2(1, -68.5035)
+curve = SubResource("Curve2D_alqy0")
+
+[node name="Path2D3_Moving" type="Path2D" parent="Node2D"]
+position = Vector2(323, -78)
+curve = SubResource("Curve2D_1lx4o")
+
 [node name="PlacerOnSpline2D" type="Node2D" parent="Node2D"]
-position = Vector2(463, 278)
-script = ExtResource("4_vp2bq")
+position = Vector2(196, 229)
+script = ExtResource("8_ibymt")
 scene_to_place = ExtResource("3_a6608")
-count = 16
+count = 25
 metadata/_custom_type_script = "uid://dr81agdqkach1"
 
-[node name="Instances2" type="Node2D" parent="Node2D/PlacerOnSpline2D"]
+[node name="Instances" type="Node2D" parent="Node2D/PlacerOnSpline2D"]
 
-[node name="TestItem_0" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
+[node name="TestItem_0" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
 
-[node name="TestItem_1" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(16.6137, 23.7282)
+[node name="TestItem_1" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(22.7684, 17.0354)
 
-[node name="TestItem_2" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(40.9282, 35.1618)
+[node name="TestItem_2" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(47.5273, 30.8252)
 
-[node name="TestItem_3" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(62.9356, 18.0803)
+[node name="TestItem_3" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(75.0234, 36.6797)
 
-[node name="TestItem_4" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(78.9127, -6.11962)
+[node name="TestItem_4" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(102.652, 31.2681)
 
-[node name="TestItem_5" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(96.7193, -28.8179)
+[node name="TestItem_5" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(127.232, 17.0487)
 
-[node name="TestItem_6" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(122.461, -32.8532)
+[node name="TestItem_6" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(150.023, 0.0295283)
 
-[node name="TestItem_7" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(142.111, -12.168)
+[node name="TestItem_7" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(172.874, -16.8863)
 
-[node name="TestItem_8" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(157.889, 12.168)
+[node name="TestItem_8" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(197.581, -30.7629)
 
-[node name="TestItem_9" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(177.539, 32.8532)
+[node name="TestItem_9" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(225.032, -37.123)
 
-[node name="TestItem_10" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(203.281, 28.8178)
+[node name="TestItem_10" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(252.505, -30.998)
 
-[node name="TestItem_11" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(221.087, 6.11959)
+[node name="TestItem_11" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(277.138, -16.9141)
 
-[node name="TestItem_12" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(237.064, -18.0803)
+[node name="TestItem_12" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(300, -9.39369e-05)
 
-[node name="TestItem_13" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(259.072, -35.1618)
+[node name="TestItem_13" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(322.862, 16.9139)
 
-[node name="TestItem_14" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(283.386, -23.7282)
+[node name="TestItem_14" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(347.494, 30.9978)
 
-[node name="TestItem_15" parent="Node2D/PlacerOnSpline2D/Instances2" instance=ExtResource("3_a6608")]
-position = Vector2(300, 0)
+[node name="TestItem_15" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(374.968, 37.123)
 
-[node name="Spline-Editor2" type="Path2D" parent="Node2D/PlacerOnSpline2D"]
-curve = SubResource("Curve2D_1lx4o")
+[node name="TestItem_16" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(402.418, 30.763)
+
+[node name="TestItem_17" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(427.125, 16.8864)
+
+[node name="TestItem_18" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(449.977, -0.0293566)
+
+[node name="TestItem_19" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(472.768, -17.0486)
+
+[node name="TestItem_20" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(497.348, -31.2681)
+
+[node name="TestItem_21" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(524.976, -36.6797)
+
+[node name="TestItem_22" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(552.473, -30.8252)
+
+[node name="TestItem_23" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(577.232, -17.0355)
+
+[node name="TestItem_24" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
+position = Vector2(600, 0)
+
+[node name="Spline-Editor" type="Path2D" parent="Node2D/PlacerOnSpline2D"]
+curve = SubResource("Curve2D_70uka")
 
 [node name="PlayerTest" parent="." instance=ExtResource("5_2b2ve")]
 position = Vector2(507, 204)
