@@ -4,8 +4,8 @@
 
 - [x] PlacerOnSpline2D - places and updates copies of a element on a spline
 	
-	-- [x] works - can be animated with sinus curve
-	-- [ ] works perfect - renames things sometimes as "2"
+	- [x] works - can be animated with sinus curve
+	- [ ] works perfect - renames things sometimes as "2"
 	
 - [x] SinusCurve2D - a sinus wave resolution and frequency keept in a box
 - [X] RegularShape2D - regular shape by point count
