@@ -201,6 +201,11 @@ curve = SubResource("Curve2D_alqy0")
 position = Vector2(323, -78)
 curve = SubResource("Curve2D_1lx4o")
 
+[node name="Path2D3_Moving2" type="Path2D" parent="Node2D"]
+unique_name_in_owner = true
+position = Vector2(646, -156)
+curve = SubResource("Curve2D_70uka")
+
 [node name="PlacerOnSpline2D" type="Node2D" parent="Node2D"]
 position = Vector2(196, 229)
 script = ExtResource("8_ibymt")
@@ -208,83 +213,9 @@ scene_to_place = ExtResource("3_a6608")
 count = 25
 metadata/_custom_type_script = "uid://dr81agdqkach1"
 
-[node name="Instances" type="Node2D" parent="Node2D/PlacerOnSpline2D"]
+[node name="Instances2" type="Node2D" parent="Node2D/PlacerOnSpline2D"]
 
-[node name="TestItem_0" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-
-[node name="TestItem_1" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(22.7684, 17.0354)
-
-[node name="TestItem_2" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(47.5273, 30.8252)
-
-[node name="TestItem_3" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(75.0234, 36.6797)
-
-[node name="TestItem_4" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(102.652, 31.2681)
-
-[node name="TestItem_5" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(127.232, 17.0487)
-
-[node name="TestItem_6" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(150.023, 0.0295283)
-
-[node name="TestItem_7" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(172.874, -16.8863)
-
-[node name="TestItem_8" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(197.581, -30.7629)
-
-[node name="TestItem_9" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(225.032, -37.123)
-
-[node name="TestItem_10" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(252.505, -30.998)
-
-[node name="TestItem_11" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(277.138, -16.9141)
-
-[node name="TestItem_12" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(300, -9.39369e-05)
-
-[node name="TestItem_13" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(322.862, 16.9139)
-
-[node name="TestItem_14" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(347.494, 30.9978)
-
-[node name="TestItem_15" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(374.968, 37.123)
-
-[node name="TestItem_16" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(402.418, 30.763)
-
-[node name="TestItem_17" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(427.125, 16.8864)
-
-[node name="TestItem_18" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(449.977, -0.0293566)
-
-[node name="TestItem_19" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(472.768, -17.0486)
-
-[node name="TestItem_20" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(497.348, -31.2681)
-
-[node name="TestItem_21" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(524.976, -36.6797)
-
-[node name="TestItem_22" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(552.473, -30.8252)
-
-[node name="TestItem_23" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(577.232, -17.0355)
-
-[node name="TestItem_24" type="StaticBody2D" parent="Node2D/PlacerOnSpline2D/Instances" instance=ExtResource("3_a6608")]
-position = Vector2(600, 0)
-
-[node name="Spline-Editor" type="Path2D" parent="Node2D/PlacerOnSpline2D"]
+[node name="Spline-Editor2" type="Path2D" parent="Node2D/PlacerOnSpline2D"]
 curve = SubResource("Curve2D_70uka")
 
 [node name="PlayerTest" parent="." instance=ExtResource("5_2b2ve")]

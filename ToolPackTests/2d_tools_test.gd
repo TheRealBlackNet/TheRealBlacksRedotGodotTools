@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var path: Path2D = %Path2D2_Mov1_Master
-@onready var spline_editor_2: Path2D = $"Node2D/PlacerOnSpline2D/Spline-Editor"
+@onready var spline_editor_2: Path2D = %Path2D3_Moving2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -50,7 +50,11 @@ func _update_instances() -> void:
 		if spline and spline and spline.curve\
 			and !spline.curve.changed.is_connected(splineChanged):
 			spline.curve.changed.connect(splineChanged)
-		_moveInstances()
+			
+		if groupNode and groupNode.get_child_count(false) == 0:
+			_redoInstances()
+		else: 
+			_moveInstances()
 		return
 
 	_ensure_group_exists()
@@ -80,6 +84,7 @@ func _moveInstances() -> void:
 	if curve == null:
 		return
 
+
 	var total_length := curve.get_baked_length()
 	if total_length <= 0 or count <= 0:
 		return
@@ -90,7 +95,10 @@ func _moveInstances() -> void:
 		var dist := t * total_length
 		var pos = curve.sample_baked(dist)
 		var inst := groupNode.get_child(i)
-		inst.position = pos
+		if inst:
+			inst.position = pos
+		else:
+			_update_instances()
 
 
 func _redoInstances() -> void:
