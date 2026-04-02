@@ -15,7 +15,7 @@ class_name PlacerOnSpline2D
 # Internal list of placed nodes
 var placed_nodes: Array[Node] = []
 var spline: Path2D
-var groupNode:Node2D
+var group_node:Node2D
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -27,12 +27,12 @@ func _ready() -> void:
 		_update_instances()
 
 func _setExistingNodes() -> void:
-	if spline == null or groupNode == null:
+	if spline == null or group_node == null:
 		for node:Node in get_children(false):
 			if node is Node2D\
 				and node.name.begins_with("Instances"):
-				groupNode = node
-				for inst in groupNode.get_children(false):
+				group_node = node
+				for inst in group_node.get_children(false):
 					placed_nodes.push_back(inst)
 			elif node is Path2D\
 			 	and node.name.begins_with("Spline-Editor"):
@@ -51,7 +51,7 @@ func _update_instances() -> void:
 			and !spline.curve.changed.is_connected(splineChanged):
 			spline.curve.changed.connect(splineChanged)
 			
-		if groupNode and groupNode.get_child_count(false) == 0:
+		if group_node and group_node.get_child_count(false) == 0:
 			_redoInstances()
 		else: 
 			_moveInstances()
@@ -94,7 +94,7 @@ func _moveInstances() -> void:
 		var t := float(i) / float(count - 1) if count > 1 else 0.0
 		var dist := t * total_length
 		var pos = curve.sample_baked(dist)
-		var inst := groupNode.get_child(i)
+		var inst := group_node.get_child(i)
 		if inst:
 			inst.position = pos
 		else:
@@ -126,7 +126,7 @@ func _redoInstances() -> void:
 		var inst := scene_to_place.instantiate()
 		inst.name = "%s_%d" % [scene_to_place.\
 			resource_path.get_file().get_basename(), i]
-		groupNode.add_child(inst)
+		group_node.add_child(inst)
 		# MUST BE BELOW ADD_CHILD
 		inst.owner = get_tree().edited_scene_root
 		inst.position = pos
@@ -157,16 +157,16 @@ func _ensure_spline_exists() -> void:
 
 
 func _ensure_group_exists() -> void:
-	if groupNode\
-		and is_instance_valid(groupNode):
+	if group_node\
+		and is_instance_valid(group_node):
 		return
 	
-	groupNode = Node2D.new()
-	groupNode.name = "Instances"
-	add_child(groupNode)
+	group_node = Node2D.new()
+	group_node.name = "Instances"
+	add_child(group_node)
 	var tree:SceneTree = get_tree()
 	if tree != null:
-		groupNode.owner = tree.edited_scene_root
+		group_node.owner = tree.edited_scene_root
 	else:
-		groupNode = null
+		group_node = null
 		return
