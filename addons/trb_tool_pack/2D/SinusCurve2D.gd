@@ -17,7 +17,7 @@ class_name SinusCurve2D
 		_redoPoints()
 @export var delta_time:float = 0.0:
 	set(val):
-		delta_time = val
+		delta_time = fmod(val, TAU)
 		_redoPoints()
 
 func _ready() -> void:

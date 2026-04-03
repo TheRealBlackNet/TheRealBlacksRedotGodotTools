@@ -13,6 +13,8 @@
 - [X] StarCollisionPolygon2D - a star 
 - [X] CogCollisionPolygon2D - cog shape
 
+- [X] CogMesh - a 3d cog
+- [ ] LatheMesh - spline rotated object
 
 - [ ] more features
 - [ ] InvoluteCogCollisionPolygon2D - removed - to many points
@@ -24,3 +26,5 @@
 [Video PlacerOnSpline2D\SinusCurve2D](https://www.youtube.com/watch?v=f3UMnEeWZXQ)
 
 [Video Regular, Star and CogCollisionPolygon2D](https://www.youtube.com/watch?v=Meevjy162ok)
+
+[Video CogMesh](https://youtu.be/gJ87z-J4EJk?si=6CxdlCK1uEeWUK2o)

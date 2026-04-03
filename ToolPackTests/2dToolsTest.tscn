@@ -219,4 +219,4 @@ metadata/_custom_type_script = "uid://dr81agdqkach1"
 curve = SubResource("Curve2D_70uka")
 
 [node name="PlayerTest" parent="." instance=ExtResource("5_2b2ve")]
-position = Vector2(507, 204)
+position = Vector2(767, 175)
