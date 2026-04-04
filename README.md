@@ -14,14 +14,19 @@
 - [X] CogCollisionPolygon2D - cog shape
 
 - [X] CogMesh - a 3d cog
-- [ ] LatheMesh - spline rotated object
+- [x] LatheMesh - spline rotated object - can do overhangs that TubeTrailMesh cant.
+Works best with a Path3D to edit the spline - needs some tries to connect propper
+
 
 - [ ] more features
 - [ ] InvoluteCogCollisionPolygon2D - removed - to many points
 
 **Links**
 
-![Preview.](/ToolPackTests/A_PreviewImage_1.png "Preview")
+![Preview. 2D](/ToolPackTests/A_PreviewImage_1.png "Preview 2D")
+
+![Preview. LatheMesh](/ToolPackTests/A_PreviewImage_2.png "Preview LatheMesh")
+
 
 [Video PlacerOnSpline2D\SinusCurve2D](https://www.youtube.com/watch?v=f3UMnEeWZXQ)
 

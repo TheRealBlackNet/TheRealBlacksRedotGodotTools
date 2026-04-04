@@ -16,14 +16,14 @@ var time:float = 0.0
 func _process(delta: float) -> void:
 	time = time+delta*1.0
 	if time > TAU:
-		time - PI
+		time = time - PI
 	g_1.rotate(Vector3.FORWARD, delta/4.0)
 	g_2.rotate(Vector3.FORWARD, -delta/4.0)
 
 	g_3.rotate(Vector3.FORWARD, -delta/2.0)
 	g_4.rotate(Vector3.LEFT, delta/16.0)
 	
-	var c1:CogMesh = g_1.mesh as CogMesh
+	#var c1:CogMesh = g_1.mesh as CogMesh
 	var c2:CogMesh = g_3.mesh as CogMesh
 	var c3:CogMesh = g_4.mesh as CogMesh
 	
