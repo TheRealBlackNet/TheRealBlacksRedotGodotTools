@@ -17,9 +17,14 @@
 - [x] LatheMesh - spline rotated object - can do overhangs that TubeTrailMesh cant.
 Works best with a Path3D to edit the spline - needs some tries to connect propper
 
+- [x] ArrowMesh <- <|= <==
+- [ ] LoftMesh - Form - Form - Form 
+- [ ] SweepMesh - Spline and Form x--------x loft first
 
 - [ ] more features
 - [ ] InvoluteCogCollisionPolygon2D - removed - to many points
+- [ ] maybe use PrimitiveMesh as base
+
 
 **Links**
 

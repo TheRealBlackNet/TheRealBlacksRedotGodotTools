@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnfy2lkicb8j"]
+
+[sub_resource type="Curve" id="Curve_ccerp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.666667, 0.632678), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_5cqum"]
+flip_faces = true
+add_uv2 = true
+size = 2.0
+sections = 4
+section_length = 1.0
+section_segments = 5
+curve = SubResource("Curve_ccerp")
+
+[sub_resource type="Curve" id="Curve_mo7tu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.542179), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_a2ocr"]
+radius = 0.895
+radial_steps = 4
+section_length = 0.5
+section_rings = 4
+curve = SubResource("Curve_mo7tu")
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_uwfkj"]
+
+[node name="MeshTest" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.793382, -0.597035, 0.118715, -0.380732, -0.334532, 0.862051, -0.474961, -0.729135, -0.492722, -14.5499, 0, 0)
+
+[node name="RibbonTail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00017, 15.4838)
+ignore_occlusion_culling = true
+mesh = SubResource("RibbonTrailMesh_5cqum")
+
+[node name="TubeTrail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2812, 10.6806)
+mesh = SubResource("TubeTrailMesh_a2ocr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_uwfkj")
