@@ -18,7 +18,8 @@
 Works best with a Path3D to edit the spline - needs some tries to connect propper
 
 - [x] ArrowMesh <- <|= <==
-- [ ] LoftMesh - Form - Form - Form 
+- [x] LoftMesh - Form - Form - Form 
+	suboptimal - holes and config is bad... no global vectors.
 - [ ] SweepMesh - Spline and Form x--------x loft first
 
 - [ ] more features
