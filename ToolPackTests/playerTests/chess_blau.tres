@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b5m3qhc8ug5iw"]
+
+[ext_resource type="Texture2D" uid="uid://b0clxe2ci752d" path="res://ToolPackTests/playerTests/checkerboard.png" id="1_1xr81"]
+
+[resource]
+albedo_color = Color(0, 0.72549, 1, 1)
+albedo_texture = ExtResource("1_1xr81")
+albedo_texture_force_srgb = true
+rim = 0.0
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true

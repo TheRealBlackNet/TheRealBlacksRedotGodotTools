@@ -1,6 +1,14 @@
 # TheRealBlacksRedotGodotTools
 
-**Features**
+**Features - Scrips**
+
+- [x] FPS Player 3D
+
+- [ ] FLying Player 3D (Drone)
+
+
+
+**Features - Forms and Shapes**
 
 - [x] PlacerOnSpline2D - places and updates copies of a element on a spline
 	
@@ -25,6 +33,15 @@ Works best with a Path3D to edit the spline - needs some tries to connect proppe
 - [ ] more features
 - [ ] InvoluteCogCollisionPolygon2D - removed - to many points
 - [ ] maybe use PrimitiveMesh as base
+
+
+
+
+
+
+**Other**
+
+- Kenney Development-Essentials License added
 
 
 **Links**

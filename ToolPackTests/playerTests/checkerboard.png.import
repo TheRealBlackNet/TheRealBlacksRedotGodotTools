@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vfjgktdloblf"
-path.s3tc="res://.godot/imported/uv_texture_kenney_development-essentials.png-3e3cc8c86be9df944d29dbd7be049e57.s3tc.ctex"
+uid="uid://b0clxe2ci752d"
+path.s3tc="res://.godot/imported/checkerboard.png-2507de81d24c89a0ecb4cf19f8789f2e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://ToolPackTests/uv_texture_kenney_development-essentials.png"
-dest_files=["res://.godot/imported/uv_texture_kenney_development-essentials.png-3e3cc8c86be9df944d29dbd7be049e57.s3tc.ctex"]
+source_file="res://ToolPackTests/playerTests/checkerboard.png"
+dest_files=["res://.godot/imported/checkerboard.png-2507de81d24c89a0ecb4cf19f8789f2e.s3tc.ctex"]
 
 [params]
 

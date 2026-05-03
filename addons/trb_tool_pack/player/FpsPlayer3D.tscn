@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://yia12s4b1ik8"]
+
+[ext_resource type="Script" uid="uid://b441c7sd6trs4" path="res://addons/trb_tool_pack/player/fps_player_3d.gd" id="1_11ykq"]
+[ext_resource type="Script" uid="uid://b2scmju54yr73" path="res://addons/trb_tool_pack/player/fpv_cam_setup.gd" id="2_5hoqp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11ykq"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5hoqp"]
+radius = 0.3
+height = 0.9
+
+[node name="FpsPlayer3d" type="CharacterBody3D" node_paths=PackedStringArray("cam_setup")]
+script = ExtResource("1_11ykq")
+cam_setup = NodePath("CamSetup")
+
+[node name="CollisionStanding" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_11ykq")
+debug_fill = false
+
+[node name="CollisionCrawl" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_5hoqp")
+debug_fill = false
+
+[node name="CamSetup" type="Node3D" parent="." node_paths=PackedStringArray("player", "rotating_cam", "current_cam_position", "position_standing", "position_crawl")]
+script = ExtResource("2_5hoqp")
+player = NodePath("..")
+rotating_cam = NodePath("CurrentCamPos/PlayerCam")
+current_cam_position = NodePath("CurrentCamPos")
+position_standing = NodePath("CamPos1")
+position_crawl = NodePath("CamPos2")
+
+[node name="CurrentCamPos" type="Node3D" parent="CamSetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+
+[node name="PlayerCam" type="Camera3D" parent="CamSetup/CurrentCamPos"]
+
+[node name="CamPos1" type="Node3D" parent="CamSetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+
+[node name="CamPos2" type="Node3D" parent="CamSetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="Meshs" type="Node3D" parent="."]
+
+[node name="BodyStanding" type="Node3D" parent="Meshs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.245398, 0)
+
+[node name="Body" type="CSGCylinder3D" parent="Meshs/BodyStanding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.980404, 0.122617)
+radius = 0.158203
+height = 1.33893
+
+[node name="head" type="CSGCylinder3D" parent="Meshs/BodyStanding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85732, 0.142827)
+radius = 0.0756836
+height = 0.278078
+
+[node name="Feet1" type="CSGCylinder3D" parent="Meshs/BodyStanding"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.09799324, 0.356783, 0.051089264)
+radius = 0.0927734
+height = 0.4
+
+[node name="Feet2" type="CSGCylinder3D" parent="Meshs/BodyStanding"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.098, 0.357, 0.051139884)
+radius = 0.0927734
+height = 0.4
+
+[node name="Hand1" type="CSGCylinder3D" parent="Meshs/BodyStanding"]
+transform = Transform3D(1, 0, 0, 0, -0.972341, 0.233564, 0, -0.233564, -0.972341, 0.18733, 1.26028, 0.0715633)
+radius = 0.0927734
+height = 0.6
+
+[node name="Hand2" type="CSGCylinder3D" parent="Meshs/BodyStanding"]
+transform = Transform3D(1, 0, 0, 0, -0.972341, 0.233564, 0, -0.233564, -0.972341, -0.187, 1.26049, 0.0717877)
+radius = 0.0927734
+height = 0.6
+
+[node name="BodyCrawl" type="Node3D" parent="Meshs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.245398, 0)
+visible = false
+
+[node name="Body" type="CSGCylinder3D" parent="Meshs/BodyCrawl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.551091, 0.234387)
+radius = 0.158203
+height = 0.480301
+
+[node name="head" type="CSGCylinder3D" parent="Meshs/BodyCrawl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97335, 0.216524)
+radius = 0.0756836
+height = 0.278078
+
+[node name="Feet1" type="CSGCylinder3D" parent="Meshs/BodyCrawl"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.18733, 0.356783, 0.323078)
+radius = 0.0927734
+height = 0.468475
+
+[node name="Feet2" type="CSGCylinder3D" parent="Meshs/BodyCrawl"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.187, 0.357, 0.323303)
+radius = 0.0927734
+height = 0.468475
+
+[node name="Hand1" type="CSGCylinder3D" parent="Meshs/BodyCrawl"]
+transform = Transform3D(1, 0, 0, 0, -0.593911, 0.804531, 0, -0.804531, -0.593911, 0.18733, 0.525235, 0.195951)
+radius = 0.0927734
+height = 0.6
+
+[node name="Hand2" type="CSGCylinder3D" parent="Meshs/BodyCrawl"]
+transform = Transform3D(1, 0, 0, 0, -0.593911, 0.804531, 0, -0.804531, -0.593911, -0.187, 0.525451, 0.196176)
+radius = 0.0927734
+height = 0.6
