@@ -3,6 +3,14 @@
 **Features - Scrips**
 
 - [x] FPS Player 3D
+- [ ] Camera System - Cam and Body have tilt zones so turning and looking
+- [ ] walking align it on tween 
+- [ ] menu system\locking movement
+- [ ] tab\esc out and back in regrab mouse as own controller
+- [ ] gym
+- [ ] crouch\crawl 
+
+
 
 - [ ] FLying Player 3D (Drone)
 

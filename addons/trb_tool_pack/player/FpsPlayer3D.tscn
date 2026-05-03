@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://yia12s4b1ik8"]
+[gd_scene load_steps=6 format=3 uid="uid://yia12s4b1ik8"]
 
 [ext_resource type="Script" uid="uid://b441c7sd6trs4" path="res://addons/trb_tool_pack/player/fps_player_3d.gd" id="1_11ykq"]
 [ext_resource type="Script" uid="uid://b2scmju54yr73" path="res://addons/trb_tool_pack/player/fpv_cam_setup.gd" id="2_5hoqp"]
+[ext_resource type="Script" uid="uid://b24o7v7l66inv" path="res://addons/trb_tool_pack/player/mouse_capture.gd" id="2_c6ilm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_11ykq"]
 radius = 0.4
@@ -11,9 +12,11 @@ height = 1.8
 radius = 0.3
 height = 0.9
 
-[node name="FpsPlayer3d" type="CharacterBody3D" node_paths=PackedStringArray("cam_setup")]
+[node name="FpsPlayer3d" type="CharacterBody3D"]
 script = ExtResource("1_11ykq")
-cam_setup = NodePath("CamSetup")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_c6ilm")
 
 [node name="CollisionStanding" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
