@@ -19,6 +19,8 @@ var mouse_sensitivity:float = 10.0
 
 
 func _input(event: InputEvent) -> void:
+	if MouseCapture.is_mouse_free() || MouseCapture.is_mouse_trapped():
+		return # tab out or in menue
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x / mouse_sensitivity
 		rotating_cam.rotation_degrees.x -= event.relative.y / mouse_sensitivity
