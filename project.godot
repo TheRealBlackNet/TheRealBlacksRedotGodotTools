@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TheRealBlacksRedotGodotTools"
-run/main_scene="uid://qmoy8h6ljdgh"
+run/main_scene="uid://gg7rsv1ci1sm"
 config/features=PackedStringArray("26.1", "GL Compatibility", "Redot")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,11 @@ gdscript/warnings/unsafe_property_access=1
 gdscript/warnings/unsafe_method_access=1
 gdscript/warnings/unsafe_cast=1
 gdscript/warnings/unsafe_call_argument=1
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 

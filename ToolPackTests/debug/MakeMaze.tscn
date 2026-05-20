@@ -1,0 +1,154 @@
+[gd_scene load_steps=4 format=3 uid="uid://gg7rsv1ci1sm"]
+
+[ext_resource type="Script" uid="uid://bpi60olc1aojo" path="res://ToolPackTests/debug/make_maze.gd" id="1_fdiab"]
+
+[sub_resource type="SystemFont" id="SystemFont_vs7ch"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdiab"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MakeMaze" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fdiab")
+
+[node name="txtOutput1" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.4160004
+offset_top = 14.0
+offset_right = -490.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_constants/caret_width = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = SubResource("SystemFont_vs7ch")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_fdiab")
+text = "╔════╗╔══►╔╗╔╗▲╔╗◄═►╔═══╗
+╚╗█╔►▼║╔═╗║╚╝║║║║╔═╗║◄╗╔╝
+╔╝╔╝╔═╝║▲║╚╗╔╝╚╝╚╝█║║╔╝║▲
+║╔╝▲▼╔═╝║╚╗║║█╔╗▲╔═╝▼▼╔╝║"
+editable = false
+scroll_past_end_of_file = true
+caret_blink = true
+
+[node name="txtOutput2" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.142
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 512.416
+offset_top = 12.0
+offset_right = -6.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_vs7ch")
+theme_override_font_sizes/normal_font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_fdiab")
+bbcode_enabled = true
+text = "╔════╗╔══►╔╗╔╗▲╔╗◄═►╔═══╗
+╚╗█╔►▼║╔═╗║╚╝║║║║╔═╗║◄╗╔╝
+╔╝╔╝╔═╝║▲║╚╗╔╝╚╝╚╝█║║╔╝║▲
+║╔╝▲▼╔═╝║╚╗║║█╔╗▲╔═╝▼▼╔╝║"
+selection_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.14
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = -6.279999
+offset_bottom = -6.0
+
+[node name="btnMakeMap" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "MAKE MAP"
+
+[node name="Seed" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Seed"
+
+[node name="nudSeed" type="SpinBox" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -100000000000000.0
+max_value = 1e+15
+value = 4563482.0
+allow_greater = true
+allow_lesser = true
+
+[node name="XY Size" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Size x\\y"
+
+[node name="nudSizeX" type="SpinBox" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -100000000000000.0
+max_value = 1e+15
+value = 34.0
+allow_greater = true
+allow_lesser = true
+
+[node name="nudSizeY" type="SpinBox" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -100000000000000.0
+max_value = 1e+15
+value = 15.0
+allow_greater = true
+allow_lesser = true
+
+[node name="Perfect" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Perfect Nodes"
+
+[node name="checkShortCuts" type="CheckButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "on - add 
+shortcuts
+on weak
+nodes"
+
+[node name="nudShortGap" type="SpinBox" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -100000000000000.0
+max_value = 1e+15
+value = 10.0
+allow_greater = true
+allow_lesser = true
+
+[connection signal="button_up" from="VBoxContainer/btnMakeMap" to="." method="_on_btn_make_map_button_up"]
+[connection signal="value_changed" from="VBoxContainer/nudSeed" to="." method="_on_nud_seed_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/nudSizeX" to="." method="_on_nud_seed_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/nudSizeY" to="." method="_on_nud_seed_value_changed"]
+[connection signal="toggled" from="VBoxContainer/checkShortCuts" to="." method="_on_check_short_cuts_toggled"]
+[connection signal="value_changed" from="VBoxContainer/nudShortGap" to="." method="_on_nud_seed_value_changed"]
