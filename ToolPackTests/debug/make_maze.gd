@@ -7,6 +7,7 @@ extends Control
 @onready var txt_output_2: RichTextLabel = %txtOutput2
 @onready var check_short_cuts: CheckButton = %checkShortCuts
 @onready var nud_short_gap: SpinBox = %nudShortGap
+@onready var nud_short_range: SpinBox = %nudShortRange
 
 
 func _process(_delta: float) -> void:
@@ -19,12 +20,14 @@ func _ready() -> void:
 func do() -> void:
 	makeMaze(int(%nudSeed.value),\
 	 	int(%nudSizeX.value), int(%nudSizeY.value),\
-		check_short_cuts.button_pressed, float(nud_short_gap.value)
+		check_short_cuts.button_pressed,\
+		float(nud_short_gap.value), float(nud_short_range.value)
 		)
 
-func makeMaze(seedvalue:int, sizeX:int, sizeY:int, addShort:bool, gap:float ) -> MazeGrid:
+func makeMaze(seedvalue:int, sizeX:int, sizeY:int,\
+		addShort:bool, gap:float, range:float ) -> MazeGrid:
 	var grid:MazeGrid = MazeGrid.makeNewMaze(\
-		seedvalue,sizeX,sizeY,addShort, gap)
+		seedvalue,sizeX,sizeY,addShort, gap,range)
 	
 	#for y:int in range(0, grid.__grid_size_y):
 	#	for x:int in range(0, grid.__grid_size_x):

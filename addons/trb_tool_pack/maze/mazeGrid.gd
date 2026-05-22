@@ -9,17 +9,20 @@ var __grid_size_y:int
 
 var __add_grapherrors:bool
 var __add_grapherrors_value:float
+var __add_grapherrors_window:float
 
 enum MapDirection {NORTH,EAST,WEST,SOUTH,UP,DOWN,ERROR}
 
 
-static func makeNewMaze(seed:int, sizeX:int, sizeY:int, addShort:bool, gap:float) -> MazeGrid:
+static func makeNewMaze(seed:int, sizeX:int, sizeY:int,\
+		addShort:bool, gap:float, gap_range:float) -> MazeGrid:
 	var grid:MazeGrid = MazeGrid.new()
 	grid.__startSeed = seed
 	grid.__grid_size_x = sizeX
 	grid.__grid_size_y = sizeY
 	grid.__add_grapherrors = addShort
 	grid.__add_grapherrors_value = gap
+	grid.__add_grapherrors_window = gap_range
 	
 	var rng:RandomNumberGenerator = RandomNumberGenerator.new()
 	rng.set_seed(seed)
@@ -84,8 +87,9 @@ func mazer(current:MapNode): #1
 		if !currentneighbor.visited:
 			connectTwoNodes(current,currentneighbor)
 		elif __add_grapherrors\
-			and abs(currentneighbor.weight - current.weight)\
-			 	< __add_grapherrors_value:
+			and abs(abs(currentneighbor.weight - current.weight)\
+			 	 - __add_grapherrors_value)\
+				 < __add_grapherrors_window:
 			current.color = "red"
 			connectTwoNodes(current,currentneighbor)
 		mazer(currentneighbor)

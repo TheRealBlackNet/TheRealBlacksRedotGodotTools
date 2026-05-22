@@ -4,6 +4,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_vs7ch"]
 font_names = PackedStringArray("Monospace")
+keep_rounding_remainders = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdiab"]
 bg_color = Color(0, 0, 0, 1)
@@ -17,22 +18,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fdiab")
 
-[node name="txtOutput1" type="TextEdit" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 13.0
+offset_right = 1143.0
+offset_bottom = 642.0
+current_tab = 0
+
+[node name="WhiteMap" type="PanelContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="txtOutput1" type="TextEdit" parent="TabContainer/WhiteMap"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.142
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 7.4160004
-offset_top = 14.0
-offset_right = -490.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_colors/caret_color = Color(1, 1, 1, 1)
 theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
 theme_override_colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/background_color = Color(0, 0, 0, 0)
 theme_override_constants/caret_width = 1
 theme_override_constants/line_spacing = 0
@@ -47,19 +51,14 @@ editable = false
 scroll_past_end_of_file = true
 caret_blink = true
 
-[node name="txtOutput2" type="RichTextLabel" parent="."]
+[node name="RedShortCuts" type="PanelContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="txtOutput2" type="RichTextLabel" parent="TabContainer/RedShortCuts"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.142
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 512.416
-offset_top = 12.0
-offset_right = -6.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 focus_mode = 2
 theme_override_colors/selection_color = Color(0.5, 0.5, 0.5, 1)
 theme_override_fonts/normal_font = SubResource("SystemFont_vs7ch")
@@ -103,6 +102,7 @@ allow_lesser = true
 [node name="XY Size" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
 text = "Size x\\y"
 
 [node name="nudSizeX" type="SpinBox" parent="VBoxContainer"]
@@ -132,17 +132,28 @@ text = "Perfect Nodes"
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+button_pressed = true
 text = "on - add 
 shortcuts
 on weak
-nodes"
+nodes
+Pos\\Range"
 
 [node name="nudShortGap" type="SpinBox" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = -100000000000000.0
 max_value = 1e+15
-value = 10.0
+value = 33.0
+allow_greater = true
+allow_lesser = true
+
+[node name="nudShortRange" type="SpinBox" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -100000000000000.0
+max_value = 1e+15
+value = 4.0
 allow_greater = true
 allow_lesser = true
 
@@ -152,3 +163,4 @@ allow_lesser = true
 [connection signal="value_changed" from="VBoxContainer/nudSizeY" to="." method="_on_nud_seed_value_changed"]
 [connection signal="toggled" from="VBoxContainer/checkShortCuts" to="." method="_on_check_short_cuts_toggled"]
 [connection signal="value_changed" from="VBoxContainer/nudShortGap" to="." method="_on_nud_seed_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/nudShortRange" to="." method="_on_nud_seed_value_changed"]
