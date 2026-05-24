@@ -9,25 +9,21 @@ extends Control
 @onready var nud_short_gap: SpinBox = %nudShortGap
 @onready var nud_short_range: SpinBox = %nudShortRange
 
-
-func _process(_delta: float) -> void:
-	pass
-
-func _ready() -> void:
-	txt_output_2.add_theme_constant_override("line_separation", 0)
-	do()
-
 func do() -> void:
-	makeMaze(int(%nudSeed.value),\
-	 	int(%nudSizeX.value), int(%nudSizeY.value),\
+	makeMaze(\
+		int(nud_seed.value),\
+	 	int(nud_size_x.value),\
+		int(nud_size_y.value),\
 		check_short_cuts.button_pressed,\
-		float(nud_short_gap.value), float(nud_short_range.value)
+		float(nud_short_gap.value),\
+		float(nud_short_range.value)
 		)
 
-func makeMaze(seedvalue:int, sizeX:int, sizeY:int,\
-		addShort:bool, gap:float, range:float ) -> MazeGrid:
+func makeMaze(seedvalue:int,\
+		sizeX:int, sizeY:int,\
+		addShort:bool, gap:float, gaprange:float ) -> MazeGrid:
 	var grid:MazeGrid = MazeGrid.makeNewMaze(\
-		seedvalue,sizeX,sizeY,addShort, gap,range)
+		seedvalue,sizeX,sizeY,addShort, gap, gaprange)
 	
 	#for y:int in range(0, grid.__grid_size_y):
 	#	for x:int in range(0, grid.__grid_size_x):
@@ -38,6 +34,9 @@ func makeMaze(seedvalue:int, sizeX:int, sizeY:int,\
 	
 	return grid
 
+func _ready() -> void:
+	txt_output_2.add_theme_constant_override("line_separation", 0)
+	do()
 
 func _on_nud_seed_value_changed(_value: float) -> void:
 	do()
@@ -45,5 +44,5 @@ func _on_nud_seed_value_changed(_value: float) -> void:
 func _on_btn_make_map_button_up() -> void:
 	do()
 
-func _on_check_short_cuts_toggled(toggled_on: bool) -> void:
+func _on_check_short_cuts_toggled(_toggled_on: bool) -> void:
 	do()

@@ -1,60 +1,63 @@
 class_name MazeGrid
 
 var __internalData:Array
-var __exits:Array
-
-var __startSeed:int
-var __grid_size_x:int
-var __grid_size_y:int
-
-var __add_grapherrors:bool
-var __add_grapherrors_value:float
-var __add_grapherrors_window:float
+var __geneatorData:MegastructureData
+var __rng:RandomNumberGenerator
 
 enum MapDirection {NORTH,EAST,WEST,SOUTH,UP,DOWN,ERROR}
+enum NodeAttributes {VISITED,WALL,DEAD_END,CROSSING, GAP}
+enum MapStringOutput {ASCII,GAP,WEIGHT,EXITS,JSON_SAVE}
 
 
-static func makeNewMaze(seed:int, sizeX:int, sizeY:int,\
-		addShort:bool, gap:float, gap_range:float) -> MazeGrid:
+static func makeNewMaze(seed:int,\
+		sizeX:int, sizeY:int,\
+		addShort:bool, gap:float, gap_range:float\
+		) -> MazeGrid:
+			
 	var grid:MazeGrid = MazeGrid.new()
-	grid.__startSeed = seed
-	grid.__grid_size_x = sizeX
-	grid.__grid_size_y = sizeY
-	grid.__add_grapherrors = addShort
-	grid.__add_grapherrors_value = gap
-	grid.__add_grapherrors_window = gap_range
+	grid.__geneatorData = MegastructureData.makeData(\
+			seed,\
+			sizeX, sizeY,\
+			addShort, gap, gap_range)
+	grid.__rng = RandomNumberGenerator.new()
+	grid.__rng.set_seed(seed)
+
+	createGridAndMazeIt(grid)
 	
-	var rng:RandomNumberGenerator = RandomNumberGenerator.new()
-	rng.set_seed(seed)
-	
+	return grid
+
+
+static func createGridAndMazeIt(grid:MazeGrid):
+
 	##### make nodes and weights:
-	for y in range(0,sizeY):
+	for y in range(0, grid.__geneatorData._size_of_map.y):
 		var col:Array  = []
-		for x in range(0,sizeX):
-			col.push_back(MapNode.makeNode(x,y,rng.randf_range(1.0, 100.0)))
+		for x in range(0, grid.__geneatorData._size_of_map.x):
+			col.push_back(MapNode.makeNode(x,y,\
+				grid.__rng.randf_range(grid.__geneatorData._random_range.x,\
+				 grid.__geneatorData._random_range.y)))
 		## NOW ADD
 		grid.__internalData.push_back(col)
 
 	grid.mazer(grid.getXY(0,0))
 	
-	for y in range(0,sizeY):
-		for x in range(0,sizeX):
+	for y in range(0, grid.__geneatorData._size_of_map.y):
+		for x in range(0, grid.__geneatorData._size_of_map.x):
 			grid.getXY(x,y).updateOptic()
 
-
-	#print("Test: %3.3f" % grid.getXY(10,10).weight)
 	return grid
 
-	### Now make the maze 
-	# 1 Given a current cell as a parameter
-	# 2 Mark the current cell as visited
-	# 3 While the current cell has any unvisited neighbour cells
-	#	3.1 Choose one of the unvisited neighbours
-	#	3.2 Remove the wall between the current cell and the chosen cell
-	#	3.3 Invoke the routine recursively for the chosen cell
 
+
+### Now make the maze WIKI  https://de.wikipedia.org/wiki/Algorithmus_von_Prim
+# 1 Given a current cell as a parameter
+# 2 Mark the current cell as visited
+# 3 While the current cell has any unvisited neighbour cells
+#	3.1 Choose one of the unvisited neighbours
+#	3.2 Remove the wall between the current cell and the chosen cell
+#	3.3 Invoke the routine recursively for the chosen cell
 func mazer(current:MapNode): #1
-	current.visited = true #2
+	current.attributes[MazeGrid.NodeAttributes.VISITED] = 1 #2
 	var neighbors:Array = get_unvisited_neighbors(current) #3
 	
 	if neighbors.is_empty():
@@ -69,28 +72,16 @@ func mazer(current:MapNode): #1
 	#3.2
 	var other:MapNode = neighbors[0]
 	connectTwoNodes(current,other)
-#	var dir:MapDirection = MapNode.getDir(current,other)
-#	if dir == MapDirection.NORTH:
-#		current.north = other
-#		other.south = current
-#	elif dir == MapDirection.SOUTH:
-#		current.south = other
-#		other.north = current
-#	elif dir == MapDirection.EAST:
-#		current.east = other
-#		other.west = current
-#	elif dir == MapDirection.WEST:
-#		current.west = other
-#		other.east = current
 	#3.3
 	for currentneighbor:MapNode in neighbors:
-		if !currentneighbor.visited:
+		if !currentneighbor.attributes.has(MazeGrid.NodeAttributes.VISITED):
 			connectTwoNodes(current,currentneighbor)
-		elif __add_grapherrors\
+		# add graph errors (loops)
+		elif __geneatorData._add_shortcuts\
 			and abs(abs(currentneighbor.weight - current.weight)\
-			 	 - __add_grapherrors_value)\
-				 < __add_grapherrors_window:
-			current.color = "red"
+			 	 - __geneatorData._gap_position)\
+				 < __geneatorData._gap_range:
+			current.attributes[MazeGrid.NodeAttributes.GAP] = 1.0
 			connectTwoNodes(current,currentneighbor)
 		mazer(currentneighbor)
 
@@ -100,9 +91,9 @@ func get_unvisited_neighbors(current:MapNode) -> Array:
 	for v:Vector2i in [\
 		Vector2i(-1,0), Vector2i(1,0),\
 		Vector2i(0,-1), Vector2i(0,1)]:
-			var tmp = getXY(current.pos_x + v.x, current.pos_y + v.y)
+			var tmp = getXY(current.pos.x + v.x, current.pos.y + v.y)
 			if tmp != null:
-				if !tmp.visited:
+				if !tmp.attributes.has(MazeGrid.NodeAttributes.VISITED):
 					retval.push_back(tmp)
 	return retval
 
@@ -119,16 +110,19 @@ func getXY(x:int, y:int) -> MapNode:
 
 func getSaveString(plainText:bool)->String:
 	var ml:String ="\n";
-	for y:int in range(0,__grid_size_y):
-		for x:int in range(0,__grid_size_x):
+	for y:int in range(0, __geneatorData._size_of_map.y):
+		for x:int in range(0, __geneatorData._size_of_map.x):
 			var node:MapNode = getXY(x,y)
 			if plainText:
 				ml += node.optic
 			else:
-				if len(node.color) > 0:
-					ml += "[color="+node.color+"]"
+				var isGap = node.attributes.has(NodeAttributes.GAP)\
+				 	and node.attributes[NodeAttributes.GAP] > 0
+				
+				if isGap:
+					ml += "[color=RED]"
 				ml += node.optic
-				if len(node.color) > 0:
+				if isGap:
 					ml += "[/color]"
 		ml+="\n"
 	return ml

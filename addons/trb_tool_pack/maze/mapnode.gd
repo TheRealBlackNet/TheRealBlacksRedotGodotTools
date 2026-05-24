@@ -5,37 +5,60 @@ enum MapNodeType {Nothing, Wall, Path, Exit}
 static var possibleSymbols:String = "█═║╚╗╝╔╩╠╦╣╬▲►▼◄" # ░▒▓█■□
 
 var type:MapNodeType = MapNodeType.Nothing
-
+var attributes:Dictionary[MazeGrid.NodeAttributes, float]
 var optic:String = "_"
-var color:String = ""
-var pos_x:int = -1
-var pos_y:int = -1
 
+var pos:Vector2i = Vector2i(-1,-1)
 var weight:float = -1
-var visited:bool = false
 
+# double linked web
 var north:MapNode = null
 var south:MapNode = null
 var west:MapNode = null
 var east:MapNode = null
 
 
-var exitData:Exitdata = null
+
+#var exitData:Exitdata = null
+
+static func makeNode(x:int,y:int,w:float) -> MapNode:
+	var retval:MapNode = MapNode.new()
+	retval.pos = Vector2i(x,y)
+	retval.weight = w
+	return retval
+	
+static func getDir(me:MapNode,other:MapNode) -> MazeGrid.MapDirection:
+	if me.pos.x == other.pos.x and me.pos.y <= other.pos.y:
+		return MazeGrid.MapDirection.SOUTH
+	elif me.pos.x == other.pos.x and me.pos.y >= other.pos.y:
+		return MazeGrid.MapDirection.NORTH
+	elif me.pos.x <= other.pos.x  and me.pos.y == other.pos.y:
+		return MazeGrid.MapDirection.EAST
+	elif me.pos.x >= other.pos.x  and me.pos.y == other.pos.y:
+		return MazeGrid.MapDirection.WEST
+	else:
+		return MazeGrid.MapDirection.ERROR
 
 
 func updateOptic():
 	if north == null and south == null and west == null and east == null:
 		optic = "█"
+		attributes[MazeGrid.NodeAttributes.WALL] = 1.0
 	elif north != null and south != null and west != null and east != null:
 		optic = "╬"
+		attributes[MazeGrid.NodeAttributes.CROSSING] = 1.0
 	elif north != null and south == null and west == null and east == null:
 		optic = "▼"
+		attributes[MazeGrid.NodeAttributes.DEAD_END] = 1.0
 	elif north == null and south != null and west == null and east == null:
 		optic = "▲"
+		attributes[MazeGrid.NodeAttributes.DEAD_END] = 1.0
 	elif north == null and south == null and west != null and east == null:
 		optic = "►"
+		attributes[MazeGrid.NodeAttributes.DEAD_END] = 1.0
 	elif north == null and south == null and west == null and east != null:
 		optic = "◄"
+		attributes[MazeGrid.NodeAttributes.DEAD_END] = 1.0
 	# two
 	elif north != null and south != null and west == null and east == null:
 		optic = "║"
@@ -62,26 +85,6 @@ func updateOptic():
 	elif north == null and south != null and west != null and east != null:
 		optic = "╦"
 	else:
+		# error
 		optic = "░"
-
-
-
-
-static func makeNode(x:int,y:int,w:float) -> MapNode:
-	var retval:MapNode = MapNode.new()
-	retval.pos_x = x
-	retval.pos_y = y
-	retval.weight = w
-	return retval
-	
-static func getDir(me:MapNode,other:MapNode) -> MazeGrid.MapDirection:
-	if me.pos_x == other.pos_x and me.pos_y <= other.pos_y:
-		return MazeGrid.MapDirection.SOUTH
-	elif me.pos_x == other.pos_x and me.pos_y >= other.pos_y:
-		return MazeGrid.MapDirection.NORTH
-	elif me.pos_x <= other.pos_x  and me.pos_y == other.pos_y:
-		return MazeGrid.MapDirection.EAST
-	elif me.pos_x >= other.pos_x  and me.pos_y == other.pos_y:
-		return MazeGrid.MapDirection.WEST
-	else:
-		return MazeGrid.MapDirection.ERROR
+		attributes[MazeGrid.NodeAttributes.WALL] = 1.0
