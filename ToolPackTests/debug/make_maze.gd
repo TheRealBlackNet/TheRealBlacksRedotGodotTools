@@ -8,6 +8,12 @@ extends Control
 @onready var check_short_cuts: CheckButton = %checkShortCuts
 @onready var nud_short_gap: SpinBox = %nudShortGap
 @onready var nud_short_range: SpinBox = %nudShortRange
+@onready var txt_output_3: RichTextLabel = %txtOutput3
+@onready var txt_output_4: RichTextLabel = %txtOutput4
+@onready var txt_output_5: RichTextLabel = %txtOutput5
+@onready var txt_output_x: RichTextLabel = %txtOutputX
+
+
 
 func do() -> void:
 	makeMaze(\
@@ -29,8 +35,13 @@ func makeMaze(seedvalue:int,\
 	#	for x:int in range(0, grid.__grid_size_x):
 	#		ml+= grid.getXY(x,y).optic
 	
-	txt_output_1.text = grid.getSaveString(true)
-	txt_output_2.text = grid.getSaveString(false)
+	txt_output_1.text = grid.getSaveString(MazeGrid.MapStringOutput.ASCII)
+	txt_output_2.text = grid.getSaveString(MazeGrid.MapStringOutput.GAP)
+	txt_output_3.text = grid.getSaveString(MazeGrid.MapStringOutput.WEIGHT)
+	txt_output_4.text = grid.getSaveString(MazeGrid.MapStringOutput.EXITS)
+	txt_output_5.text = grid.getSaveString(MazeGrid.MapStringOutput.BIOME)
+
+	txt_output_x.text = grid.getSaveString(MazeGrid.MapStringOutput.JSON_SAVE)
 	
 	return grid
 

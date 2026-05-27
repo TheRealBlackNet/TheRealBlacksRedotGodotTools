@@ -1,0 +1,413 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1btdmoutjrmq"]
+
+[ext_resource type="PackedScene" uid="uid://dms1nuuxdj5ua" path="res://addons/trb_tool_pack/player/FreeCam.tscn" id="1_e6kmm"]
+[ext_resource type="Material" uid="uid://n5q5emdsfv14" path="res://ToolPackTests/playerTests/chess_1.tres" id="2_761fs"]
+[ext_resource type="Material" uid="uid://b5m3qhc8ug5iw" path="res://ToolPackTests/playerTests/chess_blau.tres" id="3_6ex68"]
+[ext_resource type="Material" uid="uid://c8c01qwad5cte" path="res://ToolPackTests/playerTests/chess_green.tres" id="4_swxi5"]
+[ext_resource type="Material" uid="uid://dyfxfj5jj8krp" path="res://ToolPackTests/playerTests/chess_dark.tres" id="5_rvmsq"]
+
+[sub_resource type="Environment" id="Environment_xsh4e"]
+ambient_light_source = 1
+reflected_light_source = 1
+fog_mode = 1
+fog_light_color = Color(0.708246, 0.735646, 0.7787, 1)
+fog_density = 1.0
+fog_depth_curve = 1.31951
+
+[sub_resource type="BoxMesh" id="BoxMesh_8lq8c"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eihom"]
+lightmap_size_hint = Vector2i(34, 81)
+size = Vector3(1, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3f727"]
+lightmap_size_hint = Vector2i(34, 81)
+size = Vector3(1, 6, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uejt4"]
+lightmap_size_hint = Vector2i(34, 81)
+size = Vector3(5, 1, 5)
+
+[node name="FreeCamTest" type="Node3D"]
+
+[node name="PlayerSpace" type="Node3D" parent="."]
+
+[node name="FreeCam" parent="PlayerSpace" instance=ExtResource("1_e6kmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6196766, 0)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Main" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.840757, 0.0796074, 0.535528, -0.487623, 0.541165, 0.685102, -0.23527, -0.83714, 0.493806, -0.182818, 3.11112, -14.1692)
+light_energy = 0.75
+shadow_enabled = true
+
+[node name="Back" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.897913, 0.225479, -0.378035, 0.325615, -0.918151, 0.225772, -0.296187, -0.325817, -0.89784, -0.114505, 3.32701, -14.1977)
+light_energy = 0.05
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_xsh4e")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Grund" type="Node3D" parent="Geometry"]
+
+[node name="Boden" type="CSGMesh3D" parent="Geometry/Grund"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_8lq8c")
+material = ExtResource("2_761fs")
+metadata/_edit_lock_ = true
+
+[node name="Blau5x5_" type="CSGMesh3D" parent="Geometry/Grund"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, -11.5)
+use_collision = true
+mesh = SubResource("BoxMesh_eihom")
+material = ExtResource("3_6ex68")
+
+[node name="Walls" type="Node3D" parent="Geometry/Grund"]
+
+[node name="W1" type="Node3D" parent="Geometry/Grund/Walls"]
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="W2" type="Node3D" parent="Geometry/Grund/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="W3" type="Node3D" parent="Geometry/Grund/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="W4" type="Node3D" parent="Geometry/Grund/Walls"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, 0)
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="W5" type="Node3D" parent="Geometry/Grund/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="W6" type="Node3D" parent="Geometry/Grund/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 10, 0)
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="W7" type="Node3D" parent="Geometry/Grund/Walls"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 10, 0)
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="W8" type="Node3D" parent="Geometry/Grund/Walls"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 10, 0)
+
+[node name="Green5x5_" type="CSGMesh3D" parent="Geometry/Grund/Walls/W8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Walls/W8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Walls/W8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_6" type="CSGMesh3D" parent="Geometry/Grund/Walls/W8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Walls/W8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 3, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Green5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Walls/W8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40, 7, -42.5)
+use_collision = true
+mesh = SubResource("BoxMesh_3f727")
+material = ExtResource("4_swxi5")
+
+[node name="Stair" type="Node3D" parent="Geometry/Grund"]
+
+[node name="Dark5x5_" type="CSGMesh3D" parent="Geometry/Grund/Stair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 4.5, -11.5)
+use_collision = true
+mesh = SubResource("BoxMesh_uejt4")
+material = ExtResource("5_rvmsq")
+
+[node name="Dark5x5_2" type="CSGMesh3D" parent="Geometry/Grund/Stair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 3.5, -11.5)
+use_collision = true
+mesh = SubResource("BoxMesh_uejt4")
+material = ExtResource("5_rvmsq")
+
+[node name="Dark5x5_3" type="CSGMesh3D" parent="Geometry/Grund/Stair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 2.5, -11.5)
+use_collision = true
+mesh = SubResource("BoxMesh_uejt4")
+material = ExtResource("5_rvmsq")
+
+[node name="Dark5x5_4" type="CSGMesh3D" parent="Geometry/Grund/Stair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 1.5, -11.5)
+use_collision = true
+mesh = SubResource("BoxMesh_uejt4")
+material = ExtResource("5_rvmsq")
+
+[node name="Dark5x5_5" type="CSGMesh3D" parent="Geometry/Grund/Stair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0.5, -11.5)
+use_collision = true
+mesh = SubResource("BoxMesh_uejt4")
+material = ExtResource("5_rvmsq")

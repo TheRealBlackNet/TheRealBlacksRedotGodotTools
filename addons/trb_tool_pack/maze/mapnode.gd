@@ -17,10 +17,6 @@ var south:MapNode = null
 var west:MapNode = null
 var east:MapNode = null
 
-
-
-#var exitData:Exitdata = null
-
 static func makeNode(x:int,y:int,w:float) -> MapNode:
 	var retval:MapNode = MapNode.new()
 	retval.pos = Vector2i(x,y)
@@ -39,6 +35,17 @@ static func getDir(me:MapNode,other:MapNode) -> MazeGrid.MapDirection:
 	else:
 		return MazeGrid.MapDirection.ERROR
 
+func getNeighbors()->Array[MapNode]:
+	var retval:Array[MapNode] = []
+	if north != null:
+		retval.push_back(north)
+	if south != null:
+		retval.push_back(south)
+	if west != null:
+		retval.push_back(west)
+	if east != null:
+		retval.push_back(east)
+	return retval
 
 func updateOptic():
 	if north == null and south == null and west == null and east == null:

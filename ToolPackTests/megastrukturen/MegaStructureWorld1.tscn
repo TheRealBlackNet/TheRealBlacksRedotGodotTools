@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://buacjdmmytxgo"]
+[gd_scene load_steps=7 format=3 uid="uid://buacjdmmytxgo"]
+
+[ext_resource type="Script" uid="uid://dmhqf88aqstgf" path="res://ToolPackTests/megastrukturen/mega_structure_world_start.gd" id="1_yhdtn"]
+[ext_resource type="Script" uid="uid://d24q35bu1agup" path="res://addons/trb_tool_pack/maze/megastructure.gd" id="2_0tahf"]
+[ext_resource type="PackedScene" uid="uid://dms1nuuxdj5ua" path="res://addons/trb_tool_pack/player/FreeCam.tscn" id="2_wglkj"]
+[ext_resource type="Material" uid="uid://dyfxfj5jj8krp" path="res://ToolPackTests/playerTests/chess_dark.tres" id="4_1v0mo"]
+
+[sub_resource type="Environment" id="Environment_1v0mo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ovwb3"]
+lightmap_size_hint = Vector2i(34, 81)
+size = Vector3(2, 0.25, 2)
 
 [node name="MegaStructureWorld1" type="Node3D"]
+script = ExtResource("1_yhdtn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8410819, 0.5139305, 0.16869074, -0.510592, 0.8572854, -0.06601131, -0.17854135, -0.030611219, 0.9834561, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1v0mo")
+
+[node name="FreeCam" parent="." instance=ExtResource("2_wglkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0309267, 0)
+motion_mode = 1
+speed = 15.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Megastructure" type="MeshInstance3D" parent="StaticBody3D"]
+unique_name_in_owner = true
+skeleton = NodePath("../..")
+script = ExtResource("2_0tahf")
+metadata/_custom_type_script = "uid://d24q35bu1agup"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+unique_name_in_owner = true
+
+[node name="Dark5x5_" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_ovwb3")
+material = ExtResource("4_1v0mo")
