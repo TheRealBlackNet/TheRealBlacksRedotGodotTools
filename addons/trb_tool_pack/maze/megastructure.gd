@@ -28,8 +28,8 @@ func makeMesh():
 	if mesh == null:
 		mesh = ArrayMesh.new()
 	data = MegastructureData.makeDataDefault()
-	data = MegastructureData.makeData(16378,40,40,true,50.0,2.0)
-	currentGrid = MazeGrid.makeMazeByData(data)
+	data = MegastructureData.makeData(16378,40,40, true, 50.0,2.0)
+	currentGrid = MazeGrid.makeNewMaze(data)
 	mesh.clear_surfaces()
 
 	var st := SurfaceTool.new()
