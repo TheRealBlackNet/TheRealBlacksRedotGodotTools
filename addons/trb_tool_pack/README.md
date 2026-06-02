@@ -42,18 +42,7 @@ Works best with a Path3D to edit the spline - needs some tries to connect proppe
 - [ ] InvoluteCogCollisionPolygon2D - removed - to many points
 - [ ] maybe use PrimitiveMesh as base
 
-**Maze and Mesh - Megastructures**
 
-- [x] MAZE RECUSSIVE
-- [x] MAZE iterative because godot limits to 1024 on the stack
-- [x] Mesh from Maze 
-- [ ] UV - ???
-- [ ] TOOL KIT MESH\UV
-- [ ] Light Spawning 
-- [ ] more objects
-- [ ] texutres\biome
-- [ ] events
-- [ ] event spawning
 
 
 

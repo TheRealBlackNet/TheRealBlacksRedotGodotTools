@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b61vg4g4hlg6g"]
+
+[ext_resource type="PackedScene" uid="uid://dms1nuuxdj5ua" path="res://addons/trb_tool_pack/player/FreeCam.tscn" id="1_wn6t4"]
+[ext_resource type="Material" uid="uid://dyfxfj5jj8krp" path="res://ToolPackTests/playerTests/chess_dark.tres" id="2_5dmec"]
+[ext_resource type="Script" uid="uid://c100dnvq55gu" path="res://ToolPackTests/meshing/meshUvAndCollision.gd" id="3_5dmec"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u8wgg"]
+lightmap_size_hint = Vector2i(34, 81)
+size = Vector3(2, 0.25, 2)
+
+[node name="TestMeshScene" type="Node3D"]
+
+[node name="FreeCam" parent="." instance=ExtResource("1_wn6t4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2670313, 0.38253546)
+
+[node name="Dark5x5_" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020024776, 0.5539051, 0.50127834)
+use_collision = true
+mesh = SubResource("BoxMesh_u8wgg")
+material = ExtResource("2_5dmec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2532994, -1.4032159)
+script = ExtResource("3_5dmec")

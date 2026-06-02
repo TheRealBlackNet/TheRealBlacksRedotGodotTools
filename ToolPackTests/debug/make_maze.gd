@@ -12,6 +12,7 @@ extends Control
 @onready var txt_output_4: RichTextLabel = %txtOutput4
 @onready var txt_output_5: RichTextLabel = %txtOutput5
 @onready var txt_output_x: RichTextLabel = %txtOutputX
+@onready var txt_output_version_b: TextEdit = %txtOutputVersionB
 
 
 
@@ -28,9 +29,12 @@ func do() -> void:
 func makeMaze(seedvalue:int,\
 		sizeX:int, sizeY:int,\
 		addShort:bool, gap:float, gaprange:float ) -> MazeGrid:
-	var grid:MazeGrid = MazeGrid.makeNewMaze(\
-		seedvalue,sizeX,sizeY,addShort, gap, gaprange)
 	
+	var grid:MazeGrid = MazeGrid.makeNewMaze(\
+		seedvalue,sizeX,sizeY,addShort, gap, gaprange, false)
+	
+	var gridX:MazeGrid = MazeGrid.makeNewMaze(\
+		seedvalue,sizeX,sizeY,addShort, gap, gaprange, true)
 	#for y:int in range(0, grid.__grid_size_y):
 	#	for x:int in range(0, grid.__grid_size_x):
 	#		ml+= grid.getXY(x,y).optic
@@ -42,6 +46,8 @@ func makeMaze(seedvalue:int,\
 	txt_output_5.text = grid.getSaveString(MazeGrid.MapStringOutput.BIOME)
 
 	txt_output_x.text = grid.getSaveString(MazeGrid.MapStringOutput.JSON_SAVE)
+	
+	txt_output_version_b.text = gridX.getSaveString(MazeGrid.MapStringOutput.ASCII)
 	
 	return grid
 

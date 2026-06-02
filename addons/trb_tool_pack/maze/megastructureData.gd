@@ -1,5 +1,7 @@
 class_name MegastructureData
 
+var _version_b:bool = false
+
 var _start_seed_value:int
 var _size_of_map:Vector2i
 

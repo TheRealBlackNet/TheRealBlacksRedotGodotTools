@@ -26,6 +26,11 @@ func _input(event):
 		if e.button_index > 0:
 			MouseCapture.grab_mouse()
 	
+	if Input.is_key_pressed(KEY_F1):
+		%CollisionShape3D.disabled = true
+	else:
+		%CollisionShape3D.disabled = false
+	
 	save_mouse_movement(event)
 
 

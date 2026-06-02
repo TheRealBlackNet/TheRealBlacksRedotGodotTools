@@ -4,13 +4,31 @@ class_name Megastructure
 
 var data:MegastructureData
 var currentGrid:MazeGrid
-@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
+
+var lightcollection:Node3D
+var collision_shape_3d:CollisionShape3D
+var static_body:StaticBody3D
+
+
+func _ready() -> void:
+	lightcollection = Node3D.new()
+	lightcollection.name = "lightcollection"
+	self.add_child(lightcollection,true)
+	
+	static_body = StaticBody3D.new()
+	static_body.name = "MapBody"
+	self.add_child(static_body,true)
+	
+	collision_shape_3d = CollisionShape3D.new()
+	collision_shape_3d.name = "collision_shape_3d"
+	static_body.add_child(collision_shape_3d,true)
 
 
 func makeMesh():
 	if mesh == null:
 		mesh = ArrayMesh.new()
 	data = MegastructureData.makeDataDefault()
+	data = MegastructureData.makeData(16378,40,40,true,50.0,2.0)
 	currentGrid = MazeGrid.makeMazeByData(data)
 	mesh.clear_surfaces()
 
@@ -33,6 +51,8 @@ func makeMesh():
 var elementSizeX:float = 5.0
 var elementSizeY:float = 5.0
 var wall = 0.5
+
+var roomHeight = 6.0
 
 func meshTile(st:SurfaceTool, node:MapNode):
 	var ox:float = elementSizeX * node.pos.x
@@ -65,6 +85,44 @@ func meshTile(st:SurfaceTool, node:MapNode):
 		Vector3(ox - e + elementSizeX,	0,	oz + n				),\
 		Vector3(ox - e + elementSizeX,	0,	oz - s + elementSizeY),\
 		Vector3(ox + w, 					0,	oz - s + elementSizeY))
+
+	if node.north == null:
+		_add_tri_uv(st,\
+			Vector3(ox + w, 					0,	oz + n 				),\
+			Vector3(ox + w, 					roomHeight,	oz + n 				),\
+			Vector3(ox - e + elementSizeX,	0,	oz + n 				))
+		_add_tri_uv(st,\
+			Vector3(ox + w, 					roomHeight,	oz + n 				),\
+			Vector3(ox - e + elementSizeX,	roomHeight,	oz + n 				),\
+			Vector3(ox - e + elementSizeX,	0,	oz + n 				))
+	if node.south == null:
+		_add_tri_uv(st,\
+			Vector3(ox + w,				 	0,	oz - s + elementSizeY),\
+			Vector3(ox - e + elementSizeX,	roomHeight,	oz - s + elementSizeY),\
+			Vector3(ox + w,				 	roomHeight,	oz - s + elementSizeY))
+		_add_tri_uv(st,\
+			Vector3(ox - e + elementSizeX,	roomHeight,	oz - s + elementSizeY),\
+			Vector3(ox + w,				 	0,	oz - s + elementSizeY),\
+			Vector3(ox - e + elementSizeX,	0,	oz - s + elementSizeY))
+	if node.west == null:
+		_add_tri_uv(st,\
+			Vector3(ox + w, 					roomHeight,	oz + n 				),\
+			Vector3(ox + w, 					0,	oz + n 				),\
+			Vector3(ox + w,				 	0,	oz - s + elementSizeY))
+		_add_tri_uv(st,\
+			Vector3(ox + w, 					roomHeight,	oz + n 				),\
+			Vector3(ox + w,				 	0,	oz - s + elementSizeY),\
+			Vector3(ox + w,				 	roomHeight,	oz - s + elementSizeY))
+	if node.east == null:
+		_add_tri_uv(st,\
+			Vector3(ox - e + elementSizeX,	0,	oz + n 				),\
+			Vector3(ox - e + elementSizeX,	roomHeight,	oz + n 				),\
+			Vector3(ox - e + elementSizeX,				 	0,	oz - s + elementSizeY))
+		_add_tri_uv(st,\
+			Vector3(ox - e + elementSizeX,	roomHeight,	oz + n 				),\
+			Vector3(ox - e + elementSizeX,	roomHeight,	oz - s + elementSizeY),\
+			Vector3(ox - e + elementSizeX,	0,	oz - s + elementSizeY))
+
 
 
 

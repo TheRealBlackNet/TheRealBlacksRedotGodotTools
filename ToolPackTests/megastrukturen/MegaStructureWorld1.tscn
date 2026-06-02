@@ -15,29 +15,31 @@ size = Vector3(2, 0.25, 2)
 script = ExtResource("1_yhdtn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.8410819, 0.5139305, 0.16869074, -0.510592, 0.8572854, -0.06601131, -0.17854135, -0.030611219, 0.9834561, 0, 0, 0)
+transform = Transform3D(0.2541624, 0.9003131, -0.353324, -0.9040147, 0.35098767, 0.24405998, 0.34374273, 0.25737917, 0.903104, 4.1563025, 6.933111, -0.24756162)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1v0mo")
 
 [node name="FreeCam" parent="." instance=ExtResource("2_wglkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0309267, 0)
+transform = Transform3D(-0.6759504, -0.2017079, -0.70880526, 0, 0.961813, -0.27370742, 0.7369471, -0.18501264, -0.6501379, -6.1261106, 7.270419, 4.8286276)
 motion_mode = 1
 speed = 15.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="FreeCam"]
+shadow_enabled = true
 
-[node name="Megastructure" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="Megastructure" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-skeleton = NodePath("../..")
 script = ExtResource("2_0tahf")
 metadata/_custom_type_script = "uid://d24q35bu1agup"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-unique_name_in_owner = true
-
 [node name="Dark5x5_" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.230517, 6.515763, 4.944529)
 use_collision = true
 mesh = SubResource("BoxMesh_ovwb3")
 material = ExtResource("4_1v0mo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Dark5x5_"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8006978, 1.9343534, 2.4683537)
+omni_range = 3649.121
+omni_attenuation = 1.417

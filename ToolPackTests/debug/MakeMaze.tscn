@@ -51,10 +51,36 @@ editable = false
 scroll_past_end_of_file = true
 caret_blink = true
 
-[node name="RedShortCuts" type="PanelContainer" parent="TabContainer"]
+[node name="WhiteMapB" type="PanelContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="txtOutputVersionB" type="TextEdit" parent="TabContainer/WhiteMapB"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_constants/caret_width = 1
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = SubResource("SystemFont_vs7ch")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_fdiab")
+text = "╔════╗╔══►╔╗╔╗▲╔╗◄═►╔═══╗
+╚╗█╔►▼║╔═╗║╚╝║║║║╔═╗║◄╗╔╝
+╔╝╔╝╔═╝║▲║╚╗╔╝╚╝╚╝█║║╔╝║▲
+║╔╝▲▼╔═╝║╚╗║║█╔╗▲╔═╝▼▼╔╝║"
+editable = false
+scroll_past_end_of_file = true
+caret_blink = true
+
+[node name="RedShortCuts" type="PanelContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="txtOutput2" type="RichTextLabel" parent="TabContainer/RedShortCuts"]
 unique_name_in_owner = true
@@ -74,7 +100,7 @@ selection_enabled = true
 [node name="Weights" type="PanelContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="txtOutput3" type="RichTextLabel" parent="TabContainer/Weights"]
 unique_name_in_owner = true
@@ -94,7 +120,7 @@ selection_enabled = true
 [node name="Exits" type="PanelContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="txtOutput4" type="RichTextLabel" parent="TabContainer/Exits"]
 unique_name_in_owner = true
@@ -114,7 +140,7 @@ selection_enabled = true
 [node name="Biome" type="PanelContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 5
 
 [node name="txtOutput5" type="RichTextLabel" parent="TabContainer/Biome"]
 unique_name_in_owner = true
@@ -134,7 +160,7 @@ selection_enabled = true
 [node name="JSON" type="PanelContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 5
+metadata/_tab_index = 6
 
 [node name="txtOutputX" type="RichTextLabel" parent="TabContainer/JSON"]
 unique_name_in_owner = true
