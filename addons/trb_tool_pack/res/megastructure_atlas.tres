@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://jfd6p3y3jn0i"]
+
+[ext_resource type="Texture2D" uid="uid://b16vkaqlbqr8x" path="res://addons/trb_tool_pack/res/UV_Color_Map_CleanCarpetDirtPanel.png" id="1_hro05"]
+
+[resource]
+atlas = ExtResource("1_hro05")
+region = Rect2(125, 125, 125, 125)
