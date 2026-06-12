@@ -5,7 +5,7 @@ enum MapNodeType {Nothing, Wall, Path, Exit}
 static var possibleSymbols:String = "█═║╚╗╝╔╩╠╦╣╬▲►▼◄" # ░▒▓█■□
 
 var type:MapNodeType = MapNodeType.Nothing
-var attributes:Dictionary[MazeGrid.NodeAttributes, float]
+var attributes:Dictionary[MazeGrid.NodeAttributes, Variant]
 var optic:String = "_"
 
 var pos:Vector2i = Vector2i(-1,-1)

@@ -12,6 +12,10 @@ extends Control
 @onready var txt_output_4: RichTextLabel = %txtOutput4
 @onready var txt_output_5: RichTextLabel = %txtOutput5
 @onready var txt_output_x: RichTextLabel = %txtOutputX
+@onready var nud_street_bias: SpinBox = %nudStreetBias
+@onready var txt_street_bias: RichTextLabel = %txtStreetBias
+
+
 
 func do() -> void:
 	makeMaze(\
@@ -20,15 +24,16 @@ func do() -> void:
 		int(nud_size_y.value),\
 		check_short_cuts.button_pressed,\
 		float(nud_short_gap.value),\
-		float(nud_short_range.value)
+		float(nud_short_range.value),\
+		float(nud_street_bias.value)\
 		)
 
 func makeMaze(seedvalue:int,\
 		sizeX:int, sizeY:int,\
-		addShort:bool, gap:float, gaprange:float ) -> MazeGrid:
+		addShort:bool, gap:float, gaprange:float, street:float ) -> MazeGrid:
 	
 	var data:MegastructureData = MegastructureData.makeData(\
-			seedvalue, sizeX, sizeY, addShort, gap, gaprange)
+			seedvalue, sizeX, sizeY, addShort, gap, gaprange, street)
 	var grid:MazeGrid = MazeGrid.makeNewMaze(data)
 
 	txt_output_1.text = grid.getSaveString(MazeGrid.MapStringOutput.ASCII)
@@ -37,6 +42,7 @@ func makeMaze(seedvalue:int,\
 	txt_output_4.text = grid.getSaveString(MazeGrid.MapStringOutput.EXITS)
 	txt_output_5.text = grid.getSaveString(MazeGrid.MapStringOutput.BIOME)
 	txt_output_x.text = grid.getSaveString(MazeGrid.MapStringOutput.JSON_SAVE)
+	txt_street_bias.text = grid.getSaveString(MazeGrid.MapStringOutput.STREET)
 	
 	return grid
 

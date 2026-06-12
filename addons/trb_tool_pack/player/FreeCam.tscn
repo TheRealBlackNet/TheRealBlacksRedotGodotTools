@@ -2,16 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cubemlqkwfepd" path="res://addons/trb_tool_pack/player/free_cam.gd" id="1_era42"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_era42"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_era42"]
+radius = 0.55908203
+height = 2.112793
 
 [node name="FreeCam" type="CharacterBody3D"]
 script = ExtResource("1_era42")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
-shape = SubResource("SphereShape3D_era42")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0762544, 0)
+shape = SubResource("CapsuleShape3D_era42")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9198579, 0)
 current = true
 fov = 90.0

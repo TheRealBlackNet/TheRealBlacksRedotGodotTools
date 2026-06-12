@@ -7,6 +7,11 @@ var _add_shortcuts:bool
 var _gap_position:float
 var _gap_range:float
 
+var _street_bias:float # ???
+
+var _features_to_place:Dictionary[MazeGrid.MapLevelFeatures, float]
+
+
 const _random_range:Vector2 = Vector2(1.0, 100.0) # static
 
 static func makeDataBlank() -> MegastructureData:
@@ -21,6 +26,12 @@ static func makeDataDefault() -> MegastructureData:
 	retval._add_shortcuts = true
 	retval._gap_position = 33.0
 	retval._gap_range = 4.0
+	retval._street_bias = 0.0
+	
+	retval._features_to_place.set(MazeGrid.MapLevelFeatures.BIOME_RED, 2.0)
+	retval._features_to_place.set(MazeGrid.MapLevelFeatures.BIOME_BLACK, 4.0)
+	retval._features_to_place.set(MazeGrid.MapLevelFeatures.BIOME_GREEN, 10.0)
+	 
 	return retval
 
 static func makeDataSize(seed:int,\
@@ -33,17 +44,25 @@ static func makeDataSize(seed:int,\
 	retval._add_shortcuts = false
 	retval._gap_position = 0.0
 	retval._gap_range = 0.0
+	retval._street_bias = 0.0
+
+	retval._features_to_place.set(MazeGrid.MapLevelFeatures.BIOME_RED, 4.0)
+	retval._features_to_place.set(MazeGrid.MapLevelFeatures.BIOME_GREEN, 10.0)
+	retval._features_to_place.set(MazeGrid.MapLevelFeatures.BIOME_BLACK, 7.0)
+
 	return retval
 
 static func makeData(seed:int,\
 			size_x:int, size_y:int,\
 			create_loops_shortcuts:bool,\
 			gap_position:float,\
-			gap_size:float\
+			gap_size:float,\
+			street_bias:float\
 		) -> MegastructureData:
 	var retval:MegastructureData = makeDataSize(seed, size_x, size_y)
 
 	retval._add_shortcuts = create_loops_shortcuts
 	retval._gap_position = gap_position
 	retval._gap_range = gap_size
+	retval._street_bias = street_bias
 	return retval

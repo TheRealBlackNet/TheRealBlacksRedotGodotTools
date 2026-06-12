@@ -51,10 +51,13 @@ Works best with a Path3D to edit the spline - needs some tries to connect proppe
 - [ ] TOOL KIT MESH\UV
 - [ ] Light Spawning 
 - [ ] more objects
-- [ ] texutres\biome
+- [x] texutres\biome
+	- [x] 3 biome in map
 - [ ] events
 - [ ] event spawning
 
+- [?] street? - failed to set a bias?
+- 
 
 
 

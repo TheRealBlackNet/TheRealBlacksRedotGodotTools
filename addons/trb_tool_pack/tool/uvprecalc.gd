@@ -32,8 +32,8 @@ static func make(arg_groups:Vector2i,\
 
 func get_uv_quad(group:Vector2i, tex:Vector2i) -> Array[Vector2]:
 	var start:Vector2 = Vector2(\
-		(group.x * textures_per_group.x + textures_per_group.x) * uv_slice.x,\
-		(group.y * textures_per_group.y + textures_per_group.y) * uv_slice.y )
+		(group.x * textures_per_group.x + tex.x) * uv_slice.x,\
+		(group.y * textures_per_group.y + tex.y) * uv_slice.y )
 	return [start, start + uv_slice_w, start+uv_slice, start+uv_slice_h]
 
 	
